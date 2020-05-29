@@ -4,3 +4,4 @@ color_scheme: "dark"
 search_enabled: true
 ga_tracking: UA-114525654-1
 highlighter: none
+repository: PixelToast/flutter-recipes
