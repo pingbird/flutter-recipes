@@ -111,12 +111,12 @@
 }
 
 .navigation {
-  @include container;
+  @include left-container;
 
   font-family: Montserrat,sans-serif;
 
   @include mq(md) {
-    padding-top: $sp-8;
+    padding-top: 1.3rem;
     padding-bottom: $gutter-spacing-sm;
     overflow-y: auto;
     flex: 1 1 auto;
