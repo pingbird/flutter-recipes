@@ -1,0 +1,107 @@
+//
+// Buttons and things that look like buttons
+//
+// stylelint-disable color-named
+
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 4px 20px;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: 1.5;
+  color: $link-color;
+  text-decoration: none;
+  vertical-align: baseline;
+  cursor: pointer;
+  background-color: $base-button-color;
+  border-width: 0;
+  border-radius: $border-radius;
+  appearance: none;
+
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+
+  &:focus:hover,
+  &.selected:focus {
+  }
+
+  &:hover,
+  &.zeroclipboard-is-hover {
+    color: darken($link-color, 2%);
+  }
+
+  &:hover,
+  &:active,
+  &.zeroclipboard-is-hover,
+  &.zeroclipboard-is-active {
+    text-decoration: none;
+    background-color: darken($base-button-color, 1%);
+  }
+
+  &:active,
+  &.selected,
+  &.zeroclipboard-is-active {
+    background-color: darken($base-button-color, 3%);
+    background-image: none;
+  }
+
+  &.selected:hover {
+    background-color: darken(#dcdcdc, 5%);
+  }
+
+  &:disabled,
+  &.disabled {
+    &,
+    &:hover {
+      color: rgba(102, 102, 102, 0.5);
+      cursor: default;
+      background-color: rgba(229, 229, 229, 0.5);
+      background-image: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.btn-outline {
+  color: $link-color;
+  background: transparent;
+
+  &:hover,
+  &:active,
+  &.zeroclipboard-is-hover,
+  &.zeroclipboard-is-active {
+    color: darken($link-color, 4%);
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+
+  &:focus:hover,
+  &.selected:focus {
+  }
+}
+
+.btn-primary {
+  @include btn-color($white, $btn-primary-color);
+}
+
+.btn-purple {
+  @include btn-color($white, $purple-100);
+}
+
+.btn-blue {
+  @include btn-color($white, $blue-000);
+}
+
+.btn-green {
+  @include btn-color($white, $green-100);
+}

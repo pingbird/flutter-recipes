@@ -1,0 +1,148 @@
+//
+// Code and syntax highlighting
+//
+// stylelint-disable selector-no-qualifying-type, declaration-block-semicolon-newline-after,declaration-block-single-line-max-declarations, selector-no-type, selector-max-type
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #ccc;
+  background: none;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #2d2d2d;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding-left: .5em;
+  padding-right: .5em;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  border-radius: .3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #737C8C;
+}
+
+.token.punctuation {
+  color: #abb2bf;
+}
+
+.token.selector,
+.token.tag {
+  color: #e06c75;
+}
+
+.token.property,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.attr-name,
+.token.deleted {
+  color: #d19a66;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.builtin,
+.token.inserted {
+  color: #98c379;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #56b6c2;
+}
+
+.token.atrule,
+.token.keyword {
+  color: #c678dd;
+}
+
+.token.function {
+  color: #61afef;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #dd8195;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.inserted {
+  color: green;
+}
+
+code {
+  padding: 0 5px 2px;
+  line-height: 1em;
+  font-weight: 400!important;
+  background: #2d2d2d;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre {
+  overflow-x: auto;
+  margin: 2em 0 1.5em;
+  padding: 20px;
+  max-width: 100%;
+  font-size: 14px;
+  line-height: 1.5em;
+  background: #2d2d2d;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  /*    max-height: 1024px;*/
+}
+
+pre code {
+  padding: 0;
+  font-size: 1.1em;
+  line-height: inherit;
+  background: transparent;
+}
