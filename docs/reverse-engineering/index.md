@@ -1,7 +1,7 @@
 ---
 title: Reverse Engineering
 has_children: true
-nav_order: 2
+nav_order: 3
 ---
 
 ### Most of this section is part of my blog post, you can check it out [here](https://blog.tst.sh/reverse-engineering-flutter-apps-part-1/).
