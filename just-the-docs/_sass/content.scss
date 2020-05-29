@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-//
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 // Styles for rendered markdown in the .main-content container
 //
 // stylelint-disable selector-no-type, max-nesting-depth, selector-max-compound-selectors, selector-max-type
@@ -20,9 +21,16 @@
     padding-left: 1.5em;
   }
 
+  ol[type="a"] > li {
+    &::before {
+      content: counter(step-counter, lower-alpha);
+    }
+  }
+
   ol {
     list-style-type: none;
     counter-reset: step-counter;
+    margin-bottom: 2rem;
 
     > li {
       position: relative;
@@ -91,7 +99,8 @@
   }
 
   h1:first-of-type {
-    margin-top: 0em;
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
   }
 
   dl {
@@ -160,6 +169,14 @@
   h5,
   h6 {
     position: relative;
+  }
+
+  h2 {
+    border-left: 6px $link-color solid;
+    padding-left: 24px;
+    font-weight: normal;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
   }
 }
 
