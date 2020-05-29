@@ -10,6 +10,7 @@ set +e
 rm -r ~/recipes-site
 rm -r ~/flutter-recipes
 set -e
+cp CNAME _site/
 mv _site ~/recipes-site
 git clone git@github.com:PixelToast/flutter-recipes.git ~/flutter-recipes
 cd ~/flutter-recipes
