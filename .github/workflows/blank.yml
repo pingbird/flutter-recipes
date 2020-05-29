@@ -22,6 +22,4 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: Stuff
-        run: chmod +x ./update-site.sh
-      - name: Stuff
-        run: /bin/bash ./update-site.sh
+        run: /bin/bash ~/update-recipes.sh
