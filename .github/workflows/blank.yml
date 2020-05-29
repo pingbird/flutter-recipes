@@ -21,8 +21,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - name: Build Jekyll site.
       - uses: fabacab/jekyll-builder-for-github-pages-action@v1 # Or whatever "@ref" you want.
         with:
           # Provide this action with your repository's `GH_PAGES_TOKEN`
