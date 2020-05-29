@@ -24,4 +24,4 @@ jobs:
       - name: Stuff
         run: chmod +x ./update-site.sh
       - name: Stuff
-        run: ./update-site.sh
+        run: /bin/bash ./update-site.sh
