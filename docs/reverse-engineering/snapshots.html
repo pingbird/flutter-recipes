@@ -1,15 +1,4 @@
-<h1 id="snapshots">Snapshots</h1>
-
-<p>The Dart SDK is highly versatile, you can embed Dart code in many different configurations on many different platforms.</p>
-
-<p>The simplest way to run Dart is to use the <code>dart</code> executable which just reads dart source files directly like a scripting
-language. It includes the primary components we call the front-end (parses Dart code), runtime (provides the environment
-for code to run in), and the JIT compiler.</p>
-
-<p>You can also use <code>dart</code> to create and execute <a href="https://github.com/dart-lang/sdk/wiki/Snapshots">snapshots</a>, a pre-compiled
-form of Dart which is commonly used to speed up frequently used command line tools (like <code>pub</code>).</p>
-
-<pre><code>#lint shell
+<!DOCTYPE html> <html lang="en-US"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <title>Snapshots - ping's cookbook</title> <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"> <link rel="stylesheet" href="/assets/css/just-the-docs.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114525654-1"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', "UA-114525654-1"); </script> <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="/assets/js/just-the-docs.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Begin Jekyll SEO tag v2.6.1 --> <title>Snapshots | ping’s cookbook</title> <meta name="generator" content="Jekyll v3.8.7" /> <meta property="og:title" content="Snapshots" /> <meta property="og:locale" content="en_US" /> <meta property="og:site_name" content="ping’s cookbook" /> <script type="application/ld+json"> {"@type":"WebPage","headline":"Snapshots","url":"/docs/reverse-engineering/snapshots.html","@context":"https://schema.org"}</script> <!-- End Jekyll SEO tag --> <script src="https://i.tst.sh/QQBGy.js"></script> <script type="text/javascript" src="/assets/js/bloglint.js"></script> </head> <body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="link" viewBox="0 0 16 16"> <title>Link</title> <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path> </symbol> </svg> <div class="page-wrap"> <div class="side-bar"> <div class="site-header"> <a href="" class="site-title lh-tight"> ping's cookbook </a> <button class="menu-button fs-3 js-main-nav-trigger" data-text-toggle="Hide" type="button">Menu</button> </div> <div class="navigation main-nav js-main-nav"> <nav role="navigation" aria-label="Main navigation"> <ul class="navigation-list"><li class="navigation-list-item active"><a href="/just-the-docs/" class="navigation-list-link"></a></li><li class="navigation-list-item"><a href="/" class="navigation-list-link">About</a></li><li class="navigation-list-item active"><a href="/docs/reverse-engineering/" class="navigation-list-link">Reverse Engineering</a><ul class="navigation-list-child-list "><li class="navigation-list-item active"><a href="/docs/reverse-engineering/snapshots.html" class="navigation-list-link active">Snapshots</a></li><li class="navigation-list-item "><a href="/docs/reverse-engineering/dart-sdk.html" class="navigation-list-link">The Dart SDK</a></li><li class="navigation-list-item "><a href="/docs/reverse-engineering/anatomy-of-a-snapshot.html" class="navigation-list-link">Anatomy of a snapshot</a></li><li class="navigation-list-item "><a href="/docs/reverse-engineering/rawobject.html" class="navigation-list-link">RawObject</a></li><li class="navigation-list-item "><a href="/docs/reverse-engineering/hello-world.html" class="navigation-list-link">Hello, World!</a></li></ul></li></ul> </nav> </div> <footer class="site-footer"> <p class="text-small text-grey-dk-000 mb-4">By <a href="https://me.tst.sh/">PixelToast</a> - <a href="https://github.com/PixelToast/flutter-recipes/">GitHub</a><br/>Theme based on <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a></p> </footer> </div> <div class="main-content-wrap js-main-content" tabindex="0"> <div class="main-content"> <div class="page-header js-page-header"> <div class="search"> <div class="search-input-wrap"> <input type="text" class="js-search-input search-input" tabindex="0" placeholder="Search" aria-label="Search" autocomplete="off"> <svg width="14" height="14" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" class="search-icon"><title>Search</title><g fill-rule="nonzero"><path d="M17.332 20.735c-5.537 0-10-4.6-10-10.247 0-5.646 4.463-10.247 10-10.247 5.536 0 10 4.601 10 10.247s-4.464 10.247-10 10.247zm0-4c3.3 0 6-2.783 6-6.247 0-3.463-2.7-6.247-6-6.247s-6 2.784-6 6.247c0 3.464 2.7 6.247 6 6.247z"/><path d="M11.672 13.791L.192 25.271 3.02 28.1 14.5 16.62z"/></g></svg> </div> <div class="js-search-results search-results-wrap"></div> </div> </div> <div class="page"> <nav class="breadcrumb-nav"> <ol class="breadcrumb-nav-list"> <li class="breadcrumb-nav-list-item"><a href="/docs/reverse-engineering/">Reverse Engineering</a></li> <li class="breadcrumb-nav-list-item"><span>Snapshots</span></li> </ol> </nav> <div id="main-content" class="page-content" role="main"> <h1 id="snapshots"> <a href="#snapshots" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#link"></use></svg></a> Snapshots </h1> <p>The Dart SDK is highly versatile, you can embed Dart code in many different configurations on many different platforms.</p> <p>The simplest way to run Dart is to use the <code class="language-plaintext highlighter-rouge">dart</code> executable which just reads dart source files directly like a scripting language. It includes the primary components we call the front-end (parses Dart code), runtime (provides the environment for code to run in), and the JIT compiler.</p> <p>You can also use <code class="language-plaintext highlighter-rouge">dart</code> to create and execute <a href="https://github.com/dart-lang/sdk/wiki/Snapshots">snapshots</a>, a pre-compiled form of Dart which is commonly used to speed up frequently used command line tools (like <code class="language-plaintext highlighter-rouge">pub</code>).</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint shell
 ping@debian:~/Desktop$ time dart hello.dart
 Hello, World!
 
@@ -24,34 +13,7 @@ Hello, World!
 real    0m0.105s
 user    0m0.208s
 sys     0m0.016s
-</code></pre>
-
-<p>As you can see, the start-up time is significantly lower when you use snapshots.</p>
-
-<p>The default snapshot format is <a href="https://github.com/dart-lang/sdk/wiki/Kernel-Documentation">kernel</a>, an intermediate
-representation of Dart code equivalent to the AST.</p>
-
-<p>When running a Flutter app in debug mode, the flutter tool creates a kernel snapshot and runs it in your android app
-with the debug runtime + JIT. This gives you the ability to debug your app and modify code live at runtime with hot
-reload.</p>
-
-<p>Unfortunately for us, using your own JIT compiler is frowned upon in the mobile industry due to increased concerns of
-RCEs. iOS actually prevents you from executing dynamically generated code like this entirely.</p>
-
-<p>There are two more types of snapshots though, <code>app-jit</code> and <code>app-aot</code>, these contain compiled machine code that can be
-initialized quicker than kernel snapshots but aren’t cross-platform.</p>
-
-<p>The final type of snapshot, <code>app-aot</code>, contains only machine code and no kernel. These snapshots are generated using the
-<code>gen_snapshots</code> tool found in <code>flutter/bin/cache/artifacts/engine/&lt;arch&gt;/&lt;target&gt;/</code>, more on that later.</p>
-
-<p>They are a little more than just a compiled version of Dart code though, in fact they are a full “snapshot” of the VMs
-heap just before main is called. This is a unique feature of Dart and one of the reasons it initializes so quickly
-compared to other runtimes.</p>
-
-<p>Flutter uses these AOT snapshots for release builds, you can see the files that contain them in the file tree for an
-Android APK built with <code>flutter build apk</code>:</p>
-
-<pre><code>#lint shell
+</code></pre></div></div> <p>As you can see, the start-up time is significantly lower when you use snapshots.</p> <p>The default snapshot format is <a href="https://github.com/dart-lang/sdk/wiki/Kernel-Documentation">kernel</a>, an intermediate representation of Dart code equivalent to the AST.</p> <p>When running a Flutter app in debug mode, the flutter tool creates a kernel snapshot and runs it in your android app with the debug runtime + JIT. This gives you the ability to debug your app and modify code live at runtime with hot reload.</p> <p>Unfortunately for us, using your own JIT compiler is frowned upon in the mobile industry due to increased concerns of RCEs. iOS actually prevents you from executing dynamically generated code like this entirely.</p> <p>There are two more types of snapshots though, <code class="language-plaintext highlighter-rouge">app-jit</code> and <code class="language-plaintext highlighter-rouge">app-aot</code>, these contain compiled machine code that can be initialized quicker than kernel snapshots but aren’t cross-platform.</p> <p>The final type of snapshot, <code class="language-plaintext highlighter-rouge">app-aot</code>, contains only machine code and no kernel. These snapshots are generated using the <code class="language-plaintext highlighter-rouge">gen_snapshots</code> tool found in <code class="language-plaintext highlighter-rouge">flutter/bin/cache/artifacts/engine/&lt;arch&gt;/&lt;target&gt;/</code>, more on that later.</p> <p>They are a little more than just a compiled version of Dart code though, in fact they are a full “snapshot” of the VMs heap just before main is called. This is a unique feature of Dart and one of the reasons it initializes so quickly compared to other runtimes.</p> <p>Flutter uses these AOT snapshots for release builds, you can see the files that contain them in the file tree for an Android APK built with <code class="language-plaintext highlighter-rouge">flutter build apk</code>:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint shell
 ping@debian:~/Desktop/app/lib$ tree .
 .
 ├── arm64-v8a
@@ -60,15 +22,7 @@ ping@debian:~/Desktop/app/lib$ tree .
 └── armeabi-v7a
     ├── libapp.so
     └── libflutter.so
-</code></pre>
-
-<p>Here you can see the two libapp.so files which are a64 and a32 snapshots as ELF binaries.</p>
-
-<p>The fact that <code>gen_snapshots</code> outputs an ELF / shared object here might be a bit misleading, it does not expose dart
-methods as symbols that can be called externally. Instead, these files are containers for the “clustered snapshot” format
-but with compiled code in the separate executable section, here is how they are structured:</p>
-
-<pre><code>#lint shell
+</code></pre></div></div> <p>Here you can see the two libapp.so files which are a64 and a32 snapshots as ELF binaries.</p> <p>The fact that <code class="language-plaintext highlighter-rouge">gen_snapshots</code> outputs an ELF / shared object here might be a bit misleading, it does not expose dart methods as symbols that can be called externally. Instead, these files are containers for the “clustered snapshot” format but with compiled code in the separate executable section, here is how they are structured:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint shell
 ping@debian:~/Desktop/app/lib/arm64-v8a$ aarch64-linux-gnu-objdump -T libapp.so
 
 libapp.so:     file format elf64-littleaarch64
@@ -78,16 +32,4 @@ DYNAMIC SYMBOL TABLE:
 0000000000006000 g    DF .text  00000000002d0de0 _kDartIsolateSnapshotInstructions
 00000000002d7000 g    DO .rodata        0000000000007f10 _kDartVmSnapshotData
 00000000002df000 g    DO .rodata        000000000021ad10 _kDartIsolateSnapshotData
-</code></pre>
-
-<p>The reason why AOT snapshots are in shared object form instead of a regular snapshot file is because machine code
-generated by <code>gen_snapshot</code> needs to be loaded into executable memory when the app starts and the nicest way to do that
-is through an ELF file.</p>
-
-<p>With this shared object, everything in the <code>.text</code> section will be loaded into executable memory by the linker allowing
-the Dart runtime to call into it at any time.</p>
-
-<p>You may have noticed there are two snapshots: the VM snapshot and the Isolate snapshot.</p>
-
-<p>DartVM has a second isolate that does background tasks called the vm isolate, it is required for <code>app-aot</code> snapshots since
-the runtime can’t dynamically load it in as the <code>dart</code> executable would.</p>
+</code></pre></div></div> <p>The reason why AOT snapshots are in shared object form instead of a regular snapshot file is because machine code generated by <code class="language-plaintext highlighter-rouge">gen_snapshot</code> needs to be loaded into executable memory when the app starts and the nicest way to do that is through an ELF file.</p> <p>With this shared object, everything in the <code class="language-plaintext highlighter-rouge">.text</code> section will be loaded into executable memory by the linker allowing the Dart runtime to call into it at any time.</p> <p>You may have noticed there are two snapshots: the VM snapshot and the Isolate snapshot.</p> <p>DartVM has a second isolate that does background tasks called the vm isolate, it is required for <code class="language-plaintext highlighter-rouge">app-aot</code> snapshots since the runtime can’t dynamically load it in as the <code class="language-plaintext highlighter-rouge">dart</code> executable would.</p> </div> </div> </div> </div> </body> </html>

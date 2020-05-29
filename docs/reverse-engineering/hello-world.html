@@ -1,32 +1,4 @@
-<h1 id="hello-world">Hello, World!</h1>
-
-<p>Cool, we can locate functions by name but how do we figure out what they actually do?</p>
-
-<p>As expected reverse engineering from here on is a bit more difficult because we are digging through the assembly code
-contained in <code>Instructions</code> objects.</p>
-
-<p>Instead of using a modern compiler backend like clang, Dart actually uses its JIT compiler for code generation but with
-a couple AOT specific optimizations.</p>
-
-<p>If you have never worked with JIT code, it is a bit bloated in some places compared to what the equivalent C code would
-produce. Not that Dart is doing a bad job though, it’s designed to be generated quickly at runtime and the hand-written
-assembly for common instructions often beats clang/gcc in terms of performance.</p>
-
-<p>Generated code being less micro-optimized actually works heavily to our advantage since it closer resembles the higher
-level IR used to generate it.</p>
-
-<p>Most of the relevant code generation can be found in:</p>
-
-<ul>
-  <li><code>vm/compiler/backend/il_&lt;arch&gt;.cc</code></li>
-  <li><code>vm/compiler/assembler/assembler_&lt;arch&gt;.cc</code></li>
-  <li><code>vm/compiler/asm_intrinsifier_&lt;arch&gt;.cc</code></li>
-  <li><code>vm/compiler/graph_intrinsifier_&lt;arch&gt;.cc</code></li>
-</ul>
-
-<p>Here is the register layout and calling conventions for dart’s A64 assembler:</p>
-
-<pre><code>#lint reg-tbl
+<!DOCTYPE html> <html lang="en-US"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=Edge"> <title>Hello, World! - ping's cookbook</title> <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"> <link rel="stylesheet" href="/assets/css/just-the-docs.css"> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114525654-1"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', "UA-114525654-1"); </script> <script type="text/javascript" src="/assets/js/vendor/lunr.min.js"></script> <script type="text/javascript" src="/assets/js/just-the-docs.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Begin Jekyll SEO tag v2.6.1 --> <title>Hello, World! | ping’s cookbook</title> <meta name="generator" content="Jekyll v3.8.7" /> <meta property="og:title" content="Hello, World!" /> <meta property="og:locale" content="en_US" /> <meta property="og:site_name" content="ping’s cookbook" /> <script type="application/ld+json"> {"@type":"WebPage","headline":"Hello, World!","url":"/docs/reverse-engineering/hello-world.html","@context":"https://schema.org"}</script> <!-- End Jekyll SEO tag --> <script src="https://i.tst.sh/QQBGy.js"></script> <script type="text/javascript" src="/assets/js/bloglint.js"></script> </head> <body> <svg xmlns="http://www.w3.org/2000/svg" style="display: none;"> <symbol id="link" viewBox="0 0 16 16"> <title>Link</title> <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path> </symbol> </svg> <div class="page-wrap"> <div class="side-bar"> <div class="site-header"> <a href="" class="site-title lh-tight"> ping's cookbook </a> <button class="menu-button fs-3 js-main-nav-trigger" data-text-toggle="Hide" type="button">Menu</button> </div> <div class="navigation main-nav js-main-nav"> <nav role="navigation" aria-label="Main navigation"> <ul class="navigation-list"><li class="navigation-list-item active"><a href="/just-the-docs/" class="navigation-list-link"></a></li><li class="navigation-list-item"><a href="/" class="navigation-list-link">About</a></li><li class="navigation-list-item active"><a href="/docs/reverse-engineering/" class="navigation-list-link">Reverse Engineering</a><ul class="navigation-list-child-list "><li class="navigation-list-item "><a href="/docs/reverse-engineering/snapshots.html" class="navigation-list-link">Snapshots</a></li><li class="navigation-list-item "><a href="/docs/reverse-engineering/dart-sdk.html" class="navigation-list-link">The Dart SDK</a></li><li class="navigation-list-item "><a href="/docs/reverse-engineering/anatomy-of-a-snapshot.html" class="navigation-list-link">Anatomy of a snapshot</a></li><li class="navigation-list-item "><a href="/docs/reverse-engineering/rawobject.html" class="navigation-list-link">RawObject</a></li><li class="navigation-list-item active"><a href="/docs/reverse-engineering/hello-world.html" class="navigation-list-link active">Hello, World!</a></li></ul></li></ul> </nav> </div> <footer class="site-footer"> <p class="text-small text-grey-dk-000 mb-4">By <a href="https://me.tst.sh/">PixelToast</a> - <a href="https://github.com/PixelToast/flutter-recipes/">GitHub</a><br/>Theme based on <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a></p> </footer> </div> <div class="main-content-wrap js-main-content" tabindex="0"> <div class="main-content"> <div class="page-header js-page-header"> <div class="search"> <div class="search-input-wrap"> <input type="text" class="js-search-input search-input" tabindex="0" placeholder="Search" aria-label="Search" autocomplete="off"> <svg width="14" height="14" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" class="search-icon"><title>Search</title><g fill-rule="nonzero"><path d="M17.332 20.735c-5.537 0-10-4.6-10-10.247 0-5.646 4.463-10.247 10-10.247 5.536 0 10 4.601 10 10.247s-4.464 10.247-10 10.247zm0-4c3.3 0 6-2.783 6-6.247 0-3.463-2.7-6.247-6-6.247s-6 2.784-6 6.247c0 3.464 2.7 6.247 6 6.247z"/><path d="M11.672 13.791L.192 25.271 3.02 28.1 14.5 16.62z"/></g></svg> </div> <div class="js-search-results search-results-wrap"></div> </div> </div> <div class="page"> <nav class="breadcrumb-nav"> <ol class="breadcrumb-nav-list"> <li class="breadcrumb-nav-list-item"><a href="/docs/reverse-engineering/">Reverse Engineering</a></li> <li class="breadcrumb-nav-list-item"><span>Hello, World!</span></li> </ol> </nav> <div id="main-content" class="page-content" role="main"> <h1 id="hello-world"> <a href="#hello-world" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#link"></use></svg></a> Hello, World! </h1> <p>Cool, we can locate functions by name but how do we figure out what they actually do?</p> <p>As expected reverse engineering from here on is a bit more difficult because we are digging through the assembly code contained in <code class="language-plaintext highlighter-rouge">Instructions</code> objects.</p> <p>Instead of using a modern compiler backend like clang, Dart actually uses its JIT compiler for code generation but with a couple AOT specific optimizations.</p> <p>If you have never worked with JIT code, it is a bit bloated in some places compared to what the equivalent C code would produce. Not that Dart is doing a bad job though, it’s designed to be generated quickly at runtime and the hand-written assembly for common instructions often beats clang/gcc in terms of performance.</p> <p>Generated code being less micro-optimized actually works heavily to our advantage since it closer resembles the higher level IR used to generate it.</p> <p>Most of the relevant code generation can be found in:</p> <ul> <li><code class="language-plaintext highlighter-rouge">vm/compiler/backend/il_&lt;arch&gt;.cc</code></li> <li><code class="language-plaintext highlighter-rouge">vm/compiler/assembler/assembler_&lt;arch&gt;.cc</code></li> <li><code class="language-plaintext highlighter-rouge">vm/compiler/asm_intrinsifier_&lt;arch&gt;.cc</code></li> <li><code class="language-plaintext highlighter-rouge">vm/compiler/graph_intrinsifier_&lt;arch&gt;.cc</code></li> </ul> <p>Here is the register layout and calling conventions for dart’s A64 assembler:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint reg-tbl
        r0 |     | Returns
 r0  -  r7 |     | Arguments
 r0  - r14 |     | General purpose
@@ -42,20 +14,7 @@ r19 - r28 |     | Callee saved registers
       r29 | fp  | Frame pointer
       r30 | lr  | Link register
       r31 | zr  | Zero / CSP
-</code></pre>
-
-<p>This ABI follows the standard AArch64 calling conventions <a href="https://infocenter.arm.com/help/topic/com.arm.doc.ihi0055b/IHI0055B_aapcs64.pdf">here</a>
-but with a few global registers:</p>
-
-<ul>
-  <li>R26 / THR: Pointer to the running vm <code>Thread</code>, see <a href="https://github.com/dart-lang/sdk/blob/7340a569caac6431d8698dc3788579b57ffcf0c6/runtime/vm/thread.h">vm/thread.h</a></li>
-  <li>R27 / PP: Pointer to the <code>ObjectPool</code> of the current context, see <a href="https://github.com/dart-lang/sdk/blob/7340a569caac6431d8698dc3788579b57ffcf0c6/runtime/vm/object.h#L4275">vm/object.h</a></li>
-  <li>R28 / BRM: The barrier mask, used for incremental garbage collection</li>
-</ul>
-
-<p>Similarly, this is the register layout for A32:</p>
-
-<pre><code>#lint reg-tbl
+</code></pre></div></div> <p>This ABI follows the standard AArch64 calling conventions <a href="https://infocenter.arm.com/help/topic/com.arm.doc.ihi0055b/IHI0055B_aapcs64.pdf">here</a> but with a few global registers:</p> <ul> <li>R26 / THR: Pointer to the running vm <code class="language-plaintext highlighter-rouge">Thread</code>, see <a href="https://github.com/dart-lang/sdk/blob/7340a569caac6431d8698dc3788579b57ffcf0c6/runtime/vm/thread.h">vm/thread.h</a></li> <li>R27 / PP: Pointer to the <code class="language-plaintext highlighter-rouge">ObjectPool</code> of the current context, see <a href="https://github.com/dart-lang/sdk/blob/7340a569caac6431d8698dc3788579b57ffcf0c6/runtime/vm/object.h#L4275">vm/object.h</a></li> <li>R28 / BRM: The barrier mask, used for incremental garbage collection</li> </ul> <p>Similarly, this is the register layout for A32:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint reg-tbl
 r0 -  r1 |     | Returns
 r0 -  r9 |     | General purpose
 r4 - r10 |     | Callee saved registers
@@ -66,23 +25,10 @@ r4 - r10 |     | Callee saved registers
      r13 | sp  | Stack pointer
      r14 | lr  | Link register
      r15 | pc  | Program counter
-</code></pre>
-
-<p>While A64 is a more common target I’ll mostly be covering A32 since its is simpler to read and disassemble.</p>
-
-<p>You can view the IR along with the disassembly by passing <code>--disassemble-optimized</code> to <code>gen_snapshot</code>, but note this
-only works on the debug/release targets and not product.</p>
-
-<p>As an example, when compiling hello world:</p>
-
-<pre><code>void hello() {
+</code></pre></div></div> <p>While A64 is a more common target I’ll mostly be covering A32 since its is simpler to read and disassemble.</p> <p>You can view the IR along with the disassembly by passing <code class="language-plaintext highlighter-rouge">--disassemble-optimized</code> to <code class="language-plaintext highlighter-rouge">gen_snapshot</code>, but note this only works on the debug/release targets and not product.</p> <p>As an example, when compiling hello world:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>void hello() {
   print("Hello, World!");
 }
-</code></pre>
-
-<p>Scrolling down a bit in the disassembly you will find:</p>
-
-<pre><code>#lint dartvm-dasm
+</code></pre></div></div> <p>Scrolling down a bit in the disassembly you will find:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint dartvm-dasm
 Code for optimized function 'package:dectest/hello_world.dart_::_hello' {
         ;; B0
         ;; B1
@@ -107,82 +53,30 @@ Code for optimized function 'package:dectest/hello_world.dart_::_hello' {
 0xf69ace90    e8bd8800               ldmia sp!, {fp, pc}
 0xf69ace94    e1200070               bkpt #0x0
 }
-</code></pre>
-
-<p>What is printed here is slightly different from a snapshot built in product but the important part is that we can see
-the IR instructions alongside assembly.</p>
-
-<p>Breaking it down:</p>
-
-<pre><code>#lint dartvm-dasm
+</code></pre></div></div> <p>What is printed here is slightly different from a snapshot built in product but the important part is that we can see the IR instructions alongside assembly.</p> <p>Breaking it down:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint dartvm-dasm
         ;; Enter frame
 0xf6a6ce60    e92d4800               stmdb sp!, {fp, lr}
 0xf6a6ce64    e28db000               add fp, sp, #0
-</code></pre>
-
-<p>This is a standard function prologue, the frame pointer of the caller and link register are pushed to the stack after
-which the frame pointer is set to the bottom of the function stack frame.</p>
-
-<p>As with the standard ARM ABI, this uses a full-descending stack meaning it grows backwards in memory.</p>
-
-<pre><code>#lint dartvm-dasm
+</code></pre></div></div> <p>This is a standard function prologue, the frame pointer of the caller and link register are pushed to the stack after which the frame pointer is set to the bottom of the function stack frame.</p> <p>As with the standard ARM ABI, this uses a full-descending stack meaning it grows backwards in memory.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint dartvm-dasm
         ;; CheckStackOverflow:8(stack=0, loop=0)
 0xf6a6ce68    e59ac024               ldr ip, [thr, #+36]
 0xf6a6ce6c    e15d000c               cmp sp, ip
 0xf6a6ce70    9bfffffe               blls +0 ; 0xf6a6ce70
-</code></pre>
-
-<p>This is a simple routine which does what you probably guessed, checks if the stack overflowed.</p>
-
-<p>Sadly their disassembler does not annotate either thread fields or branch targets so you have to do some digging.</p>
-
-<p>A list of field offsets can be found in <code>vm/compiler/runtime_offsets_extracted.h</code>, which defines
-<code>Thread_stack_limit_offset = 36</code> telling us that the field accessed is the threads stack limit.</p>
-
-<p>After the stack pointer is compared, it calls the <code>stackOverflowStubWithoutFpuRegsStub</code> stub if it has overflowed. The
-branch target in the disassembly appears to be un-patched but we can still inspect the binary afterwards to confirm.</p>
-
-<pre><code>#lint dartvm-dasm
+</code></pre></div></div> <p>This is a simple routine which does what you probably guessed, checks if the stack overflowed.</p> <p>Sadly their disassembler does not annotate either thread fields or branch targets so you have to do some digging.</p> <p>A list of field offsets can be found in <code class="language-plaintext highlighter-rouge">vm/compiler/runtime_offsets_extracted.h</code>, which defines <code class="language-plaintext highlighter-rouge">Thread_stack_limit_offset = 36</code> telling us that the field accessed is the threads stack limit.</p> <p>After the stack pointer is compared, it calls the <code class="language-plaintext highlighter-rouge">stackOverflowStubWithoutFpuRegsStub</code> stub if it has overflowed. The branch target in the disassembly appears to be un-patched but we can still inspect the binary afterwards to confirm.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint dartvm-dasm
         ;; PushArgument(v3)
 0xf6a6ce74    e285ca01               add ip, pp, #4096
 0xf6a6ce78    e59ccfa7               ldr ip, [ip, #+4007]
 0xf6a6ce7c    e52dc004               str ip, [sp, #-4]!
-</code></pre>
-
-<p>Here an object from the object pool is pushed onto the stack. Since the offset is too big to fit in an ldr offset
-encoding it uses an extra add instruction.</p>
-
-<p>This object is in fact our “Hello, World!” string as a <code>RawOneByteString*</code> stored in the <code>globalObjectPool</code> of our
-isolate at offset 8103.</p>
-
-<p>You may have noticed that offsets are misaligned, this is because object pointers are tagged with <code>kHeapObjectTag</code> from
-<code>vm/pointer_tagging.h</code>, in this case all of the pointers to <code>RawObject</code>s in compiled code are offset by 1.</p>
-
-<pre><code>#lint dartvm-dasm
+</code></pre></div></div> <p>Here an object from the object pool is pushed onto the stack. Since the offset is too big to fit in an ldr offset encoding it uses an extra add instruction.</p> <p>This object is in fact our “Hello, World!” string as a <code class="language-plaintext highlighter-rouge">RawOneByteString*</code> stored in the <code class="language-plaintext highlighter-rouge">globalObjectPool</code> of our isolate at offset 8103.</p> <p>You may have noticed that offsets are misaligned, this is because object pointers are tagged with <code class="language-plaintext highlighter-rouge">kHeapObjectTag</code> from <code class="language-plaintext highlighter-rouge">vm/pointer_tagging.h</code>, in this case all of the pointers to <code class="language-plaintext highlighter-rouge">RawObject</code>s in compiled code are offset by 1.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint dartvm-dasm
         ;; StaticCall:12( print&lt;0&gt; v3)
 0xf6a6ce80    ebfffffe               bl +0 ; 0xf6a6ce80
 0xf6a6ce84    e28dd004               add sp, sp, #4
-</code></pre>
-
-<p>Here print is called followed by the string argument being popped from the stack.</p>
-
-<p>Like before the branch hasn’t been resolved, it is a relative branch to the entry point for <code>print</code> in dart:core.</p>
-
-<pre><code>#lint dartvm-dasm
+</code></pre></div></div> <p>Here print is called followed by the string argument being popped from the stack.</p> <p>Like before the branch hasn’t been resolved, it is a relative branch to the entry point for <code class="language-plaintext highlighter-rouge">print</code> in dart:core.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint dartvm-dasm
         ;; ParallelMove r0 &lt;- C
 0xf69ace88    e59a0060               ldr r0, [thr, #+96]
-</code></pre>
-
-<p>Null is loaded into the return register, 96 being the offset to the null object field in a <code>Thread</code>.</p>
-
-<pre><code>#lint dartvm-dasm
+</code></pre></div></div> <p>Null is loaded into the return register, 96 being the offset to the null object field in a <code class="language-plaintext highlighter-rouge">Thread</code>.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#lint dartvm-dasm
         ;; Return:16(v0)
 0xf69ace8c    e24bd000               sub sp, fp, #0
 0xf69ace90    e8bd8800               ldmia sp!, {fp, pc}
 0xf69ace94    e1200070               bkpt #0x0
-</code></pre>
-
-<p>And finally the function epilogue, the stack frame is restored along with any callee-saved registers. Since lr was
-pushed last, popping it into pc will cause the function to return.</p>
-
-<p>From now on I’ll be using snippets from my own disassembler which has less problems than the builtin one.</p>
+</code></pre></div></div> <p>And finally the function epilogue, the stack frame is restored along with any callee-saved registers. Since lr was pushed last, popping it into pc will cause the function to return.</p> <p>From now on I’ll be using snippets from my own disassembler which has less problems than the builtin one.</p> </div> </div> </div> </div> </body> </html>
