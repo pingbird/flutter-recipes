@@ -1,9 +1,9 @@
 #!/bin/bash
 
-set -o verbose
 set -e
 source ~/.rvm/scripts/rvm
 rvm use 2.6.6
+set -o verbose
 bundle install
 bundle exec jekyll build
 set +e
