@@ -12,7 +12,7 @@ This requires the 'control-flow-collections' experiment to be enabled.
 Try enabling this experiment by adding it to the command line when compiling and running.dart(experiment_not_enabled)
 ```
 
-Do NOT modify analysis options to enable experiments like the message suggests.
+Do **NOT** modify analysis options to enable experiments like the message suggests.
 
 The real issue is that your dart version constraint is too low, the solution is to upgrade it in your pubspec:
 
