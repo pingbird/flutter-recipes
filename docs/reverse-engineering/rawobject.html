@@ -1,0 +1,33 @@
+<h1 id="rawobject">RawObject</h1>
+
+<p>Under the hood all managed objects in DartVM are called <code>RawObject</code>s, in true DartVM fashion these classes are all
+defined in a single 3,000 line file found at <code>vm/raw_object.h</code>.</p>
+
+<p>In generated code you can access and move around <code>RawObject*</code>s however you want as long as you yield according to an
+incremental write barrier mask, the GC appears to be able to track references through passive scanning alone.</p>
+
+<p>Here is the class tree:</p>
+
+<p><img src="https://blog.tst.sh/content/images/2020/02/classTree-1.png" alt="" /></p>
+
+<p><code>RawInstance</code>s are the traditional <code>Object</code>s you pass around Dart code and invoke methods on, all of them have an
+equivalent type in dart land. Non-instance objects however are internal and only exist to leverage reference tracking
+and garbage collection, they do not have equivalent dart types.</p>
+
+<p>Each object starts with a uint32_t containing the following tags:</p>
+
+<p><img src="https://blog.tst.sh/content/images/2020/02/objtags-1.png" alt="" /></p>
+
+<p>Class IDs here are the same as before with cluster serialization, they are defined in <code>vm/class_id.h</code>
+but also include user-defined starting at <code>kNumPredefinedCids</code>.</p>
+
+<p>Size and GC data tags are used for garbage collection, most of the time they can be ignored.</p>
+
+<p>If the canonical bit is set that means that this object is unique and no other object is equal to it, like with
+<code>Symbol</code>s and <code>Type</code>s.</p>
+
+<p>Objects are very light and the size of <code>RawInstance</code> is usually only 4 bytes, they surprisingly do not use virtual
+methods at all either.</p>
+
+<p>All of this means allocating an object and filling in its fields can be done virtually for free, something we do quite
+lot in Flutter.</p>

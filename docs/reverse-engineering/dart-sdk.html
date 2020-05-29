@@ -1,0 +1,42 @@
+<h1 id="the-dart-sdk">The Dart SDK</h1>
+
+<p>Thankfully Dart is completely open source so we don’t have to fly blind when reverse engineering the snapshot format.</p>
+
+<p>Before creating a testbed for generating and disassembling snapshots you have to set up the Dart SDK, there is
+documentation on how to build it here: <a href="https://github.com/dart-lang/sdk/wiki/Building">https://github.com/dart-lang/sdk/wiki/Building</a>.</p>
+
+<p>You want to generate libapp.so files typically orchestrated by the flutter tool, but there doesn’t seem to be any
+documentation on how to do that yourself.</p>
+
+<p>The flutter sdk ships binaries for <code>gen_snapshot</code> which is not part of the standard <code>create_sdk</code> build target you
+usually use when building dart.</p>
+
+<p>It does exist as a separate target in the SDK though, you can build the <code>gen_snapshot</code> tool for arm with this command:</p>
+
+<pre><code>./tools/build.py -m product -a simarm gen_snapshot
+</code></pre>
+
+<p>Normally you can only generate snapshots for the architecture you are running on, to work around that they have created
+sim targets which simulate snapshot generation for the target platform. This has some limitations such as not being able
+to make aarch64 or x86_64 snapshots on a 32 bit system.</p>
+
+<p>Before making a shared object you have to compile a dill file using the front-end:</p>
+
+<pre><code>~/flutter/bin/cache/dart-sdk/bin/dart ~/flutter/bin/cache/artifacts/engine/linux-x64/frontend_server.dart.snapshot --sdk-root ~/flutter/bin/cache/artifacts/engine/common/flutter_patched_sdk_product/ --strong --target=flutter --aot --tfa -Ddart.vm.product=true --packages .packages --output-dill app.dill package:foo/main.dart
+</code></pre>
+
+<p>Dill files are actually the same format as kernel snapshots, their format is specified here: <a href="https://github.com/dart-lang/sdk/blob/master/pkg/kernel/binary.md">https://github.com/dart-lang/sdk/blob/master/pkg/kernel/binary.md</a></p>
+
+<p>This is the format used as a common representation of dart code between tools, including <code>gen_snapshot</code> and <code>analyzer</code>.</p>
+
+<p>With the app.dill we can finally generate a libapp.so using this command:</p>
+
+<pre><code>gen_snapshot --causal_async_stacks --deterministic --snapshot_kind=app-aot-elf --elf=libapp.so --strip app.dill
+</code></pre>
+
+<p>Once you are able to manually generate the libapp.so, it is easy to modify the SDK to print out all of the debug
+information needed to reverse engineer the AOT snapshot format.</p>
+
+<p>As a side note, Dart was actually designed by some of the people who created JavaScript’s V8 which is arguably the most
+advanced interpreter ever made. DartVM is incredibly well engineered and I don’t think people give its creators enough
+credit.</p>

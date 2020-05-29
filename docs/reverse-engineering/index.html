@@ -1,0 +1,33 @@
+<h3 id="most-of-this-section-is-part-of-my-blog-post-you-can-check-it-out-here">Most of this section is part of my blog post, you can check it out <a href="https://blog.tst.sh/reverse-engineering-flutter-apps-part-1/">here</a>.</h3>
+
+<h1 id="reverse-engineering">Reverse Engineering</h1>
+
+<p>To start this journey I’ll cover some backstory on the Flutter stack and how it works.</p>
+
+<p>What you probably already know: Flutter was built from the ground up with its own render pipeline and widget library,
+allowing it to be truly cross platform and have a consistent design and feel no matter what device its running on.</p>
+
+<p>Unlike most platforms, all of the essential rendering components of the flutter framework (including animation, layout,
+and painting) are fully exposed to you in <a href="https://github.com/flutter/flutter/tree/master/packages/flutter">package:flutter</a>.</p>
+
+<p>You can see these components in the official architecture diagram from wiki/The-Engine-architecture:</p>
+
+<p><img src="https://blog.tst.sh/content/images/2020/02/framework.png" alt="" /></p>
+
+<p>From a reverse engineering perspective the most interesting part is is the Dart layer since that is where all of the app
+logic sits.</p>
+
+<p>But what does the Dart layer look like?</p>
+
+<p>Flutter compiles your Dart to native assembly code and uses formats that have not been publicly documented in-depth let
+alone fully decompiled and recompiled.</p>
+
+<p>For comparison other platforms like React Native just bundle minified javascript which is trivial to inspect and modify,
+additionally the bytecode for Java on Android is well documented and there are many free decompilers for it.</p>
+
+<p>Despite the lack of obfuscation (by default) or encryption, Flutter apps are still extremely difficult to reverse
+engineer at the moment since it requires in-depth knowledge of Dart internals to even scratch the surface.</p>
+
+<p>This makes Flutter very good from an intellectual property perspective, your code is almost safe from prying eyes.
+Next I’ll show you the build process of Flutter applications and explain in detail how to reverse engineer the code that
+it produces.</p>
