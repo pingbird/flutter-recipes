@@ -116,7 +116,7 @@
   font-family: Montserrat,sans-serif;
 
   @include mq(md) {
-    padding-top: 1.3rem;
+    padding-top: 3rem;
     padding-bottom: $gutter-spacing-sm;
     overflow-y: auto;
     flex: 1 1 auto;
