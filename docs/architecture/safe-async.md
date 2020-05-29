@@ -5,7 +5,7 @@ parent: Architecture
 
 # Safe Async
 
-## Common mistakes
+## Most common mistake
 
 Quite frequently I see code using `FutureBuilder` or `StreamBuilder` incorrectly:
 
