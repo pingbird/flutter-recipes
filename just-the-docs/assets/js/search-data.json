@@ -9,8 +9,8 @@
   ,"2": {
     "title": "Android Emulator on AMD CPUs",
     "content": "Android Emulator on AMD CPUs . Windows . Do NOT install either HAXM or Hyper-V. | Make sure you have Android Studio 3.2 Beta 1 or higher. | Make sure virtualization is enabled in your BIOS, the option is sometimes labelled SVM. | . Install WHPX . Run optionalfeatures from the start menu, it should open the “Windows Features” dialog. | Check Windows Hypervisor Platform. | Click OK. | Reboot. | After WHPX is installed, the Android Emulator should ‘just work’. . Linux . Install kvm, it works on AMD out of the box. | . You can use the -accel-check option to check the status of virtualization: . #lint shell ping@debian:~$ Android/sdk/emulator/emulator -accel-check accel: 0 KVM (version 12) is installed and usable. .",
-    "url": "/docs/FAQ/avd-amd.html",
-    "relUrl": "/docs/FAQ/avd-amd.html"
+    "url": "/docs/faq/avd-amd.html",
+    "relUrl": "/docs/faq/avd-amd.html"
   }
   ,"3": {
     "title": "The Dart SDK",
@@ -21,8 +21,8 @@
   ,"4": {
     "title": "experiment_not_enabled",
     "content": "experiment_not_enabled . You have gotten this warning, or something similar: . This requires the &#39;control-flow-collections&#39; experiment to be enabled. Try enabling this experiment by adding it to the command line when compiling and running.dart(experiment_not_enabled) . Do NOT modify analysis options to enable experiments like the message suggests. . The real issue is that your dart version constraint is too low, the solution is to upgrade it in your pubspec: . environment: sdk: &#39;&gt;=2.7.0 &lt;3.0.0&#39; . After you raise the version constraint, don’t forget to run pub get and restart your IDE. .",
-    "url": "/docs/FAQ/experiment-not-enabled.html",
-    "relUrl": "/docs/FAQ/experiment-not-enabled.html"
+    "url": "/docs/faq/experiment-not-enabled.html",
+    "relUrl": "/docs/faq/experiment-not-enabled.html"
   }
   ,"5": {
     "title": "Hello, World!",
@@ -33,34 +33,40 @@
   ,"6": {
     "title": "Ignoring overflow",
     "content": "Ignoring overflow . If you are here, you are probably looking for a parameter or configuration option to get rid of an annoying overflow error. Of course if it were that simple, this post would not exist. . In the majority of cases this is due to a faulty layout plain and simple, I’m going to give the benefit of the doubt and assume you have a legitimate reason for needing overflow. . The only two widgets that throw this error are Flex (Row / Column) and UnconstrainedBox, the former is obviously the most common. . The problem is not actually the fault of the Flex itself, rather the constraints given by its parent. In order to solve this issue the main axis constraint needs to be unbounded i.e. have a maximum main axis size of double.infinity. . The simplest way to give your layout the desired constraints is to use OverflowBox: . OverflowBox( maxWidth: double.infinity, child: Row(children: [ Some(), Long(), Widgets(), ]), ) . I’ve seen some people use Wrap to achieve a similar result, I highly discourage that because the fact that Wrap doesn’t check for overflow is probably an oversight and may be fixed in the future. .",
-    "url": "/docs/FAQ/ignore-overflow.html",
-    "relUrl": "/docs/FAQ/ignore-overflow.html"
+    "url": "/docs/faq/ignore-overflow.html",
+    "relUrl": "/docs/faq/ignore-overflow.html"
   }
   ,"7": {
     "title": "FAQ",
     "content": "FAQ . A bunch of commonly asked questions on Discord. .",
-    "url": "/docs/FAQ/",
-    "relUrl": "/docs/FAQ/"
+    "url": "/docs/faq/",
+    "relUrl": "/docs/faq/"
   }
   ,"8": {
+    "title": "Architecture",
+    "content": "Architecture . Everything related to state management, networking, organization, etc. .",
+    "url": "/docs/architecture/",
+    "relUrl": "/docs/architecture/"
+  }
+  ,"9": {
     "title": "Reverse Engineering",
     "content": "Most of this section is part of my blog post, you can check it out here. . Reverse Engineering . To start this journey I’ll cover some backstory on the Flutter stack and how it works. . What you probably already know: Flutter was built from the ground up with its own render pipeline and widget library, allowing it to be truly cross platform and have a consistent design and feel no matter what device its running on. . Unlike most platforms, all of the essential rendering components of the flutter framework (including animation, layout, and painting) are fully exposed to you in package:flutter. . You can see these components in the official architecture diagram from wiki/The-Engine-architecture: . . From a reverse engineering perspective the most interesting part is is the Dart layer since that is where all of the app logic sits. . But what does the Dart layer look like? . Flutter compiles your Dart to native assembly code and uses formats that have not been publicly documented in-depth let alone fully decompiled and recompiled. . For comparison other platforms like React Native just bundle minified javascript which is trivial to inspect and modify, additionally the bytecode for Java on Android is well documented and there are many free decompilers for it. . Despite the lack of obfuscation (by default) or encryption, Flutter apps are still extremely difficult to reverse engineer at the moment since it requires in-depth knowledge of Dart internals to even scratch the surface. . This makes Flutter very good from an intellectual property perspective, your code is almost safe from prying eyes. Next I’ll show you the build process of Flutter applications and explain in detail how to reverse engineer the code that it produces. .",
     "url": "/docs/reverse-engineering/",
     "relUrl": "/docs/reverse-engineering/"
   }
-  ,"9": {
+  ,"10": {
     "title": "About",
     "content": "About - ping’s cookbook . This is where I post useful resources on programming, mostly related to Dart and Flutter. .",
     "url": "/",
     "relUrl": "/"
   }
-  ,"10": {
+  ,"11": {
     "title": "RawObject",
     "content": "RawObject . Under the hood all managed objects in DartVM are called RawObjects, in true DartVM fashion these classes are all defined in a single 3,000 line file found at vm/raw_object.h. . In generated code you can access and move around RawObject*s however you want as long as you yield according to an incremental write barrier mask, the GC appears to be able to track references through passive scanning alone. . Here is the class tree: . . RawInstances are the traditional Objects you pass around Dart code and invoke methods on, all of them have an equivalent type in dart land. Non-instance objects however are internal and only exist to leverage reference tracking and garbage collection, they do not have equivalent dart types. . Each object starts with a uint32_t containing the following tags: . . Class IDs here are the same as before with cluster serialization, they are defined in vm/class_id.h but also include user-defined starting at kNumPredefinedCids. . Size and GC data tags are used for garbage collection, most of the time they can be ignored. . If the canonical bit is set that means that this object is unique and no other object is equal to it, like with Symbols and Types. . Objects are very light and the size of RawInstance is usually only 4 bytes, they surprisingly do not use virtual methods at all either. . All of this means allocating an object and filling in its fields can be done virtually for free, something we do quite lot in Flutter. .",
     "url": "/docs/reverse-engineering/rawobject.html",
     "relUrl": "/docs/reverse-engineering/rawobject.html"
   }
-  ,"11": {
+  ,"12": {
     "title": "Snapshots",
     "content": "Snapshots . The Dart SDK is highly versatile, you can embed Dart code in many different configurations on many different platforms. . The simplest way to run Dart is to use the dart executable which just reads dart source files directly like a scripting language. It includes the primary components we call the front-end (parses Dart code), runtime (provides the environment for code to run in), and the JIT compiler. . You can also use dart to create and execute snapshots, a pre-compiled form of Dart which is commonly used to speed up frequently used command line tools (like pub). . #lint shell ping@debian:~/Desktop$ time dart hello.dart Hello, World! real 0m0.656s user 0m0.920s sys 0m0.084s ping@debian:~/Desktop$ dart --snapshot=hello.snapshot hello.dart ping@debian:~/Desktop$ time dart hello.snapshot Hello, World! real 0m0.105s user 0m0.208s sys 0m0.016s . As you can see, the start-up time is significantly lower when you use snapshots. . The default snapshot format is kernel, an intermediate representation of Dart code equivalent to the AST. . When running a Flutter app in debug mode, the flutter tool creates a kernel snapshot and runs it in your android app with the debug runtime + JIT. This gives you the ability to debug your app and modify code live at runtime with hot reload. . Unfortunately for us, using your own JIT compiler is frowned upon in the mobile industry due to increased concerns of RCEs. iOS actually prevents you from executing dynamically generated code like this entirely. . There are two more types of snapshots though, app-jit and app-aot, these contain compiled machine code that can be initialized quicker than kernel snapshots but aren’t cross-platform. . The final type of snapshot, app-aot, contains only machine code and no kernel. These snapshots are generated using the gen_snapshots tool found in flutter/bin/cache/artifacts/engine/&lt;arch&gt;/&lt;target&gt;/, more on that later. . They are a little more than just a compiled version of Dart code though, in fact they are a full “snapshot” of the VMs heap just before main is called. This is a unique feature of Dart and one of the reasons it initializes so quickly compared to other runtimes. . Flutter uses these AOT snapshots for release builds, you can see the files that contain them in the file tree for an Android APK built with flutter build apk: . #lint shell ping@debian:~/Desktop/app/lib$ tree . . ├── arm64-v8a │ ├── libapp.so │ └── libflutter.so └── armeabi-v7a ├── libapp.so └── libflutter.so . Here you can see the two libapp.so files which are a64 and a32 snapshots as ELF binaries. . The fact that gen_snapshots outputs an ELF / shared object here might be a bit misleading, it does not expose dart methods as symbols that can be called externally. Instead, these files are containers for the “clustered snapshot” format but with compiled code in the separate executable section, here is how they are structured: . #lint shell ping@debian:~/Desktop/app/lib/arm64-v8a$ aarch64-linux-gnu-objdump -T libapp.so libapp.so: file format elf64-littleaarch64 DYNAMIC SYMBOL TABLE: 0000000000001000 g DF .text 0000000000004ba0 _kDartVmSnapshotInstructions 0000000000006000 g DF .text 00000000002d0de0 _kDartIsolateSnapshotInstructions 00000000002d7000 g DO .rodata 0000000000007f10 _kDartVmSnapshotData 00000000002df000 g DO .rodata 000000000021ad10 _kDartIsolateSnapshotData . The reason why AOT snapshots are in shared object form instead of a regular snapshot file is because machine code generated by gen_snapshot needs to be loaded into executable memory when the app starts and the nicest way to do that is through an ELF file. . With this shared object, everything in the .text section will be loaded into executable memory by the linker allowing the Dart runtime to call into it at any time. . You may have noticed there are two snapshots: the VM snapshot and the Isolate snapshot. . DartVM has a second isolate that does background tasks called the vm isolate, it is required for app-aot snapshots since the runtime can’t dynamically load it in as the dart executable would. .",
     "url": "/docs/reverse-engineering/snapshots.html",
