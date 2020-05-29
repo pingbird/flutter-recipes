@@ -1,5 +1,6 @@
-title: "Remote theme example"
-remote_theme: PixelToast/just-the-docs
+title: "ping's cookbook"
+theme: just-the-docs
 color_scheme: "dark"
 search_enabled: true
 ga_tracking: UA-114525654-1
+highlighter: none
