@@ -5,7 +5,7 @@ parent: Architecture
 
 # Safe Async
 
-## Most common mistake
+## Common mistake
 
 Quite frequently I see code using `FutureBuilder` or `StreamBuilder` incorrectly:
 
@@ -32,7 +32,7 @@ Thankfully these issues are easy to fix, the rest of this post provides in-depth
 
 ---
 
-### Error handling
+## Error handling
 
 FutureBuilder and StreamBuilder have flaws when it comes to error handling, the only way to know if an error has
 occurred is to manually either:
@@ -60,7 +60,7 @@ That solves error handling, but this sample code still has another flaw which is
 
 ---
 
-### Avoiding build side effects
+## Avoiding build side effects
 
 If you call a function directly to start an asynchronous task during build, that task will restart whenever the widget
 re-builds, potentially causing loss of state, infinite loops, and annoying flashes.
@@ -75,7 +75,7 @@ The two approaches I will cover are:
 
 ---
 
-### The Widget solution
+## The Widget solution
 
 The most basic solution is to create a new StatefulWidget and start the asynchronous task inside of initState.
 
@@ -191,7 +191,7 @@ And you are done! The last four examples are safe to use.
 
 ---
 
-### The state management solution
+## The state management solution
 
 Using state management here has two benefits, first it allows you to avoid multiple widgets requesting snapshots at the
 same time, second it allows you swap out the underlying supplier of information whether it be for tests or to migrate
