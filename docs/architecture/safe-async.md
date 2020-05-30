@@ -198,7 +198,7 @@ same time, second it allows you swap out the underlying supplier of information 
 away from firebase.
 
 For a continuously updating resource, [package:rxdart](https://pub.dev/packages/rxdart) [BehaviorSubject](https://pub.dev/documentation/rxdart/latest/rx/BehaviorSubject-class.html)s
-are a very nice way to hold a value and notifying listeners at the same time:
+are a very nice way to hold a value and notify listeners at the same time:
 
 ```dart
 class MyService {
