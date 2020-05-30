@@ -9,23 +9,26 @@ Here are some packages I have published:
 
 ## boxy
 
-This library provides several widgets and utilities that enable you to create advanced layouts without in-depth
-knowledge of the framework and minimal boilerplate.
-
 [pub.dev](https://pub.dev/packages/boxy){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [github](https://github.com/PixelToast/flutter-boxy){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 
+This library provides several widgets and utilities that enable you to create advanced layouts without in-depth
+knowledge of the framework and minimal boilerplate.
+
 ## async_builder
+
+[pub.dev](https://pub.dev/packages/async_builder){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[github](https://github.com/PixelToast/async_builder){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 
 This package provides `AsyncBuilder`, a widget similar to `StreamBuilder` / `FutureBuilder` which is designed to reduce
 boilerplate and improve error handling.
 
 It also provides `InitBuilder`, which makes it easier to start async tasks safely.
 
-[pub.dev](https://pub.dev/packages/async_builder){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[github](https://github.com/PixelToast/async_builder){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-
 ## spa
+
+[pub.dev](https://pub.dev/packages/spa){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[github](https://github.com/PixelToast/dart-spa){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 
 This is a Dart implementation of the Solar Position Algorithm (SPA) by Ibrahim Reda and Afshin Andreas which is used by
 the U.S. government for radiology and energy purposes. See the paper here:
@@ -33,6 +36,3 @@ the U.S. government for radiology and energy purposes. See the paper here:
 
 Given an observers coordinates and DateTime it can calculate the position of the sun and other information such as when
 the sun rises and sets.
-
-[pub.dev](https://pub.dev/packages/spa){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[github](https://github.com/PixelToast/dart-spa){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
