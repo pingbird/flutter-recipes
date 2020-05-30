@@ -177,8 +177,8 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => InitBuilder.arg<String, String>(
-    arg: keyName,
     getter: api.getString,
+    arg: keyName,
     builder: (context, future) => AsyncBuilder(
       future: future,
       builder: (context, value) => Text('$value'),
