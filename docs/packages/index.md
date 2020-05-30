@@ -25,7 +25,7 @@ It also provides `InitBuilder`, which makes it easier to start async tasks safel
 [pub.dev](https://pub.dev/packages/async_builder){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [github](https://github.com/PixelToast/async_builder){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 
-## spaS
+## spa
 
 This is a Dart implementation of the Solar Position Algorithm (SPA) by Ibrahim Reda and Afshin Andreas which is used by
 the U.S. government for radiology and energy purposes. See the paper here:
