@@ -216,6 +216,7 @@ body { position: relative; padding-bottom: 4rem; }
 @media (min-width: 31.25rem) { .page-content ol > li::before { top: 0.11em; } }
 .page-content ol > li ol { counter-reset: sub-counter; }
 .page-content ol > li ol li::before { content: counter(sub-counter,lower-alpha); counter-increment: sub-counter; }
+.page-content ul ul { margin-bottom: 0; }
 .page-content ul { list-style: none; margin-bottom: 2em; }
 .page-content ul > li::before { position: absolute; margin-left: -1.4em; color: #959396; content: "•"; }
 .page-content .task-list { padding-left: 0; }
