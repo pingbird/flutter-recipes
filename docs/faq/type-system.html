@@ -27,19 +27,19 @@
   <span class="n">callHi</span><span class="o">(</span><span class="n">Bar</span><span class="o">());</span> <span class="c1">// prints "i am bar"</span>
 <span class="o">}</span>
 </code></pre></div></div> <p>Here, <code class="language-plaintext highlighter-rouge">Bar</code>’s implementation of <code class="language-plaintext highlighter-rouge">hi</code> will always override calls from its instances, regardless of what context its in.</p> <p>All types visible to dart code are a subtype of <code class="language-plaintext highlighter-rouge">Object</code> and inherit the default implementation of its interface.</p> <p>Dart is strongly typed, that means the compiler can make strong guarantees about the type a value will have at runtime.</p> <p>Strong typing does not mean methods are guaranteed to exist though, if a method is missing when called, dart calls the <code class="language-plaintext highlighter-rouge">noSuchMethod</code> method which will throw a <code class="language-plaintext highlighter-rouge">NoSuchMethodError</code> by default.</p> <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="mi">42</span> <span class="k">as</span> <span class="kd">dynamic</span><span class="o">).</span><span class="na">foo</span><span class="o">();</span> <span class="c1">// throws NoSuchMethodError</span>
-</code></pre></div></div> <p>All field access on instances is done through calls to setter and getter methods.</p> <p>When you declare a field inside of a class, it implicitly declares setter and getter methods that read and write to an internal variable. This is different from C# for example, where setters / getters and fields are incompatible declarations.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Foo {
-  int a; // This declares both set:a and get:a
-}
+</code></pre></div></div> <p>All field access on instances is done through calls to setter and getter methods.</p> <p>When you declare a field inside of a class, it implicitly declares setter and getter methods that read and write to an internal variable. This is different from C# for example, where setters / getters and fields are incompatible declarations.</p> <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Foo</span> <span class="o">{</span>
+  <span class="kt">int</span> <span class="n">a</span><span class="o">;</span> <span class="c1">// This declares both set:a and get:a</span>
+<span class="o">}</span>
 
-class Bar extends Foo {
-  int get a =&gt; super.a * 2; // This overrides get:a without touching set:a
-}
+<span class="kd">class</span> <span class="nc">Bar</span> <span class="kd">extends</span> <span class="n">Foo</span> <span class="o">{</span>
+  <span class="kt">int</span> <span class="kd">get</span> <span class="n">a</span> <span class="o">=&gt;</span> <span class="k">super</span><span class="o">.</span><span class="na">a</span> <span class="o">*</span> <span class="mi">2</span><span class="o">;</span> <span class="c1">// This overrides get:a without touching set:a</span>
+<span class="o">}</span>
 
-main() {
-  var foo = Bar();
-  foo.a = 2;
-  print(foo.a); // prints 4
-}
+<span class="n">main</span><span class="o">()</span> <span class="o">{</span>
+  <span class="kd">var</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">Bar</span><span class="o">();</span>
+  <span class="n">foo</span><span class="o">.</span><span class="na">a</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">foo</span><span class="o">.</span><span class="na">a</span><span class="o">);</span> <span class="c1">// prints 4</span>
+<span class="o">}</span>
 </code></pre></div></div> <h2 id="assignability"> <a href="#assignability" class="anchor-heading"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#link"></use></svg></a> Assignability </h2> <p>A variable can contain values that are not actual subtypes of its declared type, specifically null:</p> <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
 <span class="n">print</span><span class="o">(</span><span class="n">x</span> <span class="k">is</span> <span class="kt">int</span><span class="o">);</span> <span class="c1">// false</span>
 </code></pre></div></div> <p>This prints false because the <code class="language-plaintext highlighter-rouge">is</code> operator is a subtype check, not an assignability check.</p> <p>The <code class="language-plaintext highlighter-rouge">as</code> operator on the other hand does do an assignability check:</p> <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
