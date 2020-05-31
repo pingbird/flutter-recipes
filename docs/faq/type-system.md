@@ -7,7 +7,7 @@ parent: FAQ
 
 ## What are types
 
-A type is an abstract identifier used to describe the interface an instance has, here are a few ways to declare them:
+A type is a definition used to describe the interface an instance can have, here are a few examples:
 
 ```dart
 // Foo is now an interface type.
@@ -211,4 +211,6 @@ void main() {
   print(x is Function); // false
   callFoo(x);
 }
+
+The `Foo` here seems to be in a superposition, 
 ```
