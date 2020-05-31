@@ -6,4 +6,4 @@ nav_order: 6
 
 # Performance
 
-Everything you need to know about improving the performance of Flutter apps.
+This category is about performance related topics like best practices and debugging.
