@@ -1,6 +1,7 @@
 ---
 title: Strategy
 parent: Performance
+nav_order: 2
 ---
 
 # Timeline
@@ -10,6 +11,9 @@ frames.
 
 Unfortunately the observatory button was removed by the Flutter plugin, see
 [IntelliJ Observatory](/docs/faq/intellij-observatory) for an easy way to open it.
+
+Keep in mind timelines can be skewed by external factors such as low memory, it's always good to double check by
+enabling performance overlays in the developer options.
 
 ## Workflow
 
