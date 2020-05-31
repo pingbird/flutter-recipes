@@ -65,6 +65,8 @@ build(context) =>
 In this case we're using a [Tuple2](https://pub.dev/documentation/tuple/latest/tuple/Tuple2-class.html) from
 [package:tuple](https://pub.dev/packages/tuple) to return two values at the same time.
 
+---
+
 ## Streams
 
 Another common problem is when you build widgets from a stream, but then need to make another request to make depending

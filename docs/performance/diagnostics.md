@@ -22,6 +22,8 @@ If the problem is complex and only happens when special conditions are met i.e. 
 scrolling down for some time", it is very helpful to reproduce this issue in a more controlled scenario before making
 changes.
 
+---
+
 ## Jank
 
 The most noticeable performance issue is Jank, which is when a small number of frames take much longer than they are

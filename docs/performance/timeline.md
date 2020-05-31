@@ -22,6 +22,8 @@ It also lacks the ability to analyze live objects, which is extremely helpful fo
 
 Until DevTools has feature parity, I would recommend learning how to use the Observatory instead.
 
+---
+
 ## Workflow
 
 My general workflow goes as follows:
@@ -55,6 +57,8 @@ My general workflow goes as follows:
     ![](https://i.tst.sh/WYvPe.png)
     
     Here we can see the root cause of the jank, I'm doing too much work in a closure in `_HomePageState.build`.
+
+---
 
 ## Complex widgets
 

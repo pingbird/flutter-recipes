@@ -5,7 +5,7 @@ parent: FAQ
 
 # Type system
 
-## What are types
+## What are types?
 
 A type is a definition used to describe the interface an instance can have, here are a few examples:
 
@@ -35,6 +35,8 @@ The most common is interface types, which describe a class with its resolved typ
 
 `dart:core` contains a bunch of classes with special type properties, I'll cover those below.
 
+---
+
 ## Instances
 
 Throughout an object's lifetime, it has a single type, this type is determined when constructed and can never be changed:
@@ -49,6 +51,8 @@ int z = y as int; // works
 
 The type used to declare a variable is only the interface, it can store any assignable instance that implements said
 interface.
+
+---
 
 ## Methods
 
@@ -106,6 +110,8 @@ main() {
 }
 ```
 
+---
+
 ## Assignability
 
 A variable can contain values that are not actual subtypes of its declared type, specifically null:
@@ -130,6 +136,8 @@ This is because a value `x` is assignable to `T` if either:
 1. `x`'s runtime type is a subtype of `T`.
 2. x is null and `T` is nullable.
 
+---
+
 ## Null vs void vs dynamic vs Object
 
 The `Null` class is special, it throws a formatted `NoSuchMethodError` when methods other than `get:hashCode`,
@@ -141,6 +149,8 @@ The `dynamic` and `void` types are both effectively an alias for `Object`, but c
 * With `void`, you can store and cast, but not access any methods.
 * With `dynamic`, you can access any methods and call it with any arguments, those return values are also treated as
 `dynamic`.
+
+---
 
 ## Closures
 
@@ -178,6 +188,8 @@ All function types are subtypes of `Function`, regardless of their return type a
 ```dart
 print(print is Function); // true
 ```
+
+---
 
 ## Callable classes
 

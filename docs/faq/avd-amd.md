@@ -20,6 +20,8 @@ parent: FAQ
 
 After WHPX is installed, the Android Emulator should 'just work'.
 
+---
+
 ## Linux
 
 * Install kvm, it works on AMD out of the box.
