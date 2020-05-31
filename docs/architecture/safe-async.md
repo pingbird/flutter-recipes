@@ -207,7 +207,7 @@ class MyService {
   
   ValueStream<Foobar> get foobar => _foobar ??= BehaviorSubject<Foobar>()..addStream(
     Firestore.instance
-      .collection('foobar').snapshots().map(Foobar.fromJson)
+      .collection('foobar').snapshots().map((e) => Foobar.fromJson(e.data))
   );
   ...
 }
