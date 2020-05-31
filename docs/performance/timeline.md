@@ -40,7 +40,7 @@ My general workflow goes as follows:
 6.  Click clear in the top right.
 
     ![](https://i.tst.sh/8K9Qj.png)
-7.  Perform the action that produce problematic frames.
+7.  Perform the action that produces problematic frames.
 8.  Click refresh.
 9.  Use the pan and zoom tools to locate a bad frame:
    
