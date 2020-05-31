@@ -1,9 +1,9 @@
 ---
-title: Type System
+title: Type system
 parent: FAQ
 ---
 
-# Type System
+# Type system
 
 ## What are types
 
