@@ -98,7 +98,7 @@
   
   <span class="n">ValueStream</span><span class="o">&lt;</span><span class="n">Foobar</span><span class="o">&gt;</span> <span class="kd">get</span> <span class="n">foobar</span> <span class="o">=&gt;</span> <span class="n">_foobar</span> <span class="o">??=</span> <span class="n">BehaviorSubject</span><span class="o">&lt;</span><span class="n">Foobar</span><span class="o">&gt;()..</span><span class="na">addStream</span><span class="o">(</span>
     <span class="n">Firestore</span><span class="o">.</span><span class="na">instance</span>
-      <span class="o">.</span><span class="na">collection</span><span class="o">(</span><span class="s">'foobar'</span><span class="o">).</span><span class="na">snapshots</span><span class="o">().</span><span class="na">map</span><span class="o">(</span><span class="n">Foobar</span><span class="o">.</span><span class="na">fromJson</span><span class="o">)</span>
+      <span class="o">.</span><span class="na">collection</span><span class="o">(</span><span class="s">'foobar'</span><span class="o">).</span><span class="na">snapshots</span><span class="o">().</span><span class="na">map</span><span class="o">((</span><span class="n">e</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">Foobar</span><span class="o">.</span><span class="na">fromJson</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">data</span><span class="o">))</span>
   <span class="o">);</span>
   <span class="o">...</span>
 <span class="o">}</span>
