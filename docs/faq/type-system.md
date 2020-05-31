@@ -90,7 +90,7 @@ When you declare a field inside of a class, it implicitly declares setter and ge
 internal variable.
 This is different from C# for example, where setters / getters and fields are incompatible declarations.
 
-```
+```dart
 class Foo {
   int a; // This declares both set:a and get:a
 }
