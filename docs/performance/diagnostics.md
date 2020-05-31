@@ -11,9 +11,9 @@ nav_order: 1
 Always keep the following in mind when deciding whether to do optimizations:
 
 * Does the issue exist on a real device in release mode?
-* Am I sure this piece of code impacts frame times?
-* Are the changes simple or are they likely to cause other issues?
-* Will the code still be maintainable after I do make changes?
+* Am I sure this piece of code actually impacts frame times?
+* Are the changes simple or likely to cause other issues?
+* Will the code still be maintainable?
 
 The worst thing you can do is premature optimization, spend as much time as possible diagnosing and understanding
 performance issues before hammering away.
