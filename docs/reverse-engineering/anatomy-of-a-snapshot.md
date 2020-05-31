@@ -135,7 +135,7 @@ Finally bringing the parser together I can view the structure of the snapshot fr
 libraries list in the root object table.
 
 Using the object tree here's how you can locate a top level function, in this case `package:ftest/main.dart`s `main`:
-![](/content/images/2020/01/dartdec-graph-1.png)
+![](https://blog.tst.sh/content/images/2020/01/dartdec-graph-1.png)
 As you can see above the names of libraries, classes, and functions are included in release snapshots.
 
 Dart can't really remove them without also obfuscating stack traces, see: [https://github.com/flutter/flutter/wiki/Obfuscating-Dart-Code](https://github.com/flutter/flutter/wiki/Obfuscating-Dart-Code)
