@@ -6,14 +6,21 @@ nav_order: 2
 
 # Timeline
 
-The most useful tool for diagnosing issues is the Observatory timeline, you can use it to quickly diagnose problematic
-frames.
+The most useful tool for analyzing performance is the Observatory timeline, you can use it to quickly locate and
+diagnose problematic frames.
 
 Unfortunately the observatory button was removed by the Flutter plugin, see
 [IntelliJ Observatory](/docs/faq/intellij-observatory) for an easy way to open it.
 
 Keep in mind timelines can be skewed by external factors such as low memory, it's always good to double check by
 enabling performance overlays in the developer options.
+
+## Why not DevTools?
+
+The DevTools timeline is also nice, but it has some limitations like not being able to get the class name of a sample.
+It also lacks the ability to analyze live objects, which is extremely helpful for tracking down memory leaks.
+
+Until DevTools has feature parity, I would recommend learning how to use the Observatory instead.
 
 ## Workflow
 
@@ -40,7 +47,7 @@ My general workflow goes as follows:
     Make sure you scroll vertically to the ui and raster threads, bad frames will stick out like this:
    
     ![](https://i.tst.sh/m3oj7.png)
-10. For ui thread problems like shown above, click the timeline event and then the overlapping samples:
+10. For ui thread problems like shown above, click the timeline event and then find the overlapping samples:
     
     ![](https://i.tst.sh/dBZ5S.png)
 11. Locate problematic functions in the samples below:
