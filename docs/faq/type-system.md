@@ -211,6 +211,7 @@ void main() {
   print(x is Function); // false
   callFoo(x);
 }
-
-The `Foo` here seems to be in a superposition, 
 ```
+
+The `x` here seems to be in a superposition between being `Foo` and being `Function`, this is because `x` is being
+implicitly converted into a closure before being passed to `callFoo`.
