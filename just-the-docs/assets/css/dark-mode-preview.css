@@ -283,6 +283,7 @@ body { position: relative; padding-bottom: 4rem; }
 .breadcrumb-nav-list-item::after { display: inline-block; margin-right: 0.5rem; margin-left: 0.5rem; color: #959396; content: "/"; }
 .breadcrumb-nav-list-item:last-child::after { content: ""; }
 .breadcrumb-nav-list-item a { text-decoration: none; background: none; }
+.breadcrumb-nav-list-item a:hover { background: none; }
 
 h1, .text-alpha { font-size: 32px !important; font-weight: 300; font-family: Montserrat,sans-serif; }
 @media (min-width: 31.25rem) { h1, .text-alpha { font-size: 36px !important; } }
