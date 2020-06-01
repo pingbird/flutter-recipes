@@ -225,6 +225,7 @@ body { position: relative; padding-bottom: 4rem; }
 .page-content .task-list-item-checkbox { margin-right: 0.6em; }
 .page-content hr + * { margin-top: 0; }
 .page-content h1:first-of-type { margin-top: 0.5rem; margin-bottom: 3rem; }
+.page-content h1:first-of-type .anchor-heading { display: none; }
 .page-content dl { display: grid; grid-template-columns: max-content 1fr; }
 .page-content dt, .page-content dd { margin: 0.25em 0; }
 .page-content dt { text-align: right; }
@@ -274,8 +275,6 @@ body { position: relative; padding-bottom: 4rem; }
 
 .aux-nav { align-self: center; }
 
-@media (min-width: 56.25rem) { .breadcrumb-nav { margin-top: -1rem; } }
-
 .breadcrumb-nav-list { padding-left: 0; margin-bottom: 0.75rem; list-style: none; }
 
 .breadcrumb-nav-list-item { display: table-cell; font-size: 11px !important; }
@@ -283,6 +282,7 @@ body { position: relative; padding-bottom: 4rem; }
 .breadcrumb-nav-list-item::before { display: none; }
 .breadcrumb-nav-list-item::after { display: inline-block; margin-right: 0.5rem; margin-left: 0.5rem; color: #959396; content: "/"; }
 .breadcrumb-nav-list-item:last-child::after { content: ""; }
+.breadcrumb-nav-list-item a { text-decoration: none; background: none; }
 
 h1, .text-alpha { font-size: 32px !important; font-weight: 300; font-family: Montserrat,sans-serif; }
 @media (min-width: 31.25rem) { h1, .text-alpha { font-size: 36px !important; } }
@@ -418,7 +418,7 @@ tbody tr:last-of-type td { padding-bottom: 0.75rem; }
 
 thead th { border-bottom: 2px solid #44434d; }
 
-code[class*="language-"], pre[class*="language-"] { color: #ccc; background: none; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; line-height: 1.5; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; -webkit-hyphens: none; -moz-hyphens: none; -ms-hyphens: none; hyphens: none; }
+code[class*="language-"], pre[class*="language-"] { color: #eee; background: none; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; word-wrap: normal; line-height: 1.5; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; -webkit-hyphens: none; -moz-hyphens: none; -ms-hyphens: none; hyphens: none; }
 
 /* Code blocks */
 pre[class*="language-"] { overflow: auto; }
