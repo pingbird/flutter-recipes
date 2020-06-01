@@ -159,6 +159,16 @@ This is the same mechanism that pauses animations, you can use `TickerMode.of(co
   }
 ```
 
+The timer should also stop when the state is disposed:
+
+```dart
+  @override
+  void dispose() {
+    stopTimer();
+    super.dispose();
+  }
+```
+
 This will start and stop our timer when the ticker mode changes, preventing the widget from consuming cpu while another
 page is above it.
 
