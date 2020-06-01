@@ -15,6 +15,8 @@ Unfortunately the observatory button was removed by the Flutter plugin, see
 Keep in mind timelines can be skewed by external factors such as low memory, it's always good to double check by
 enabling performance overlays in the developer options.
 
+---
+
 ## Why not DevTools?
 
 The DevTools timeline is also nice, but it has some limitations like not being able to get the class name of a sample.
