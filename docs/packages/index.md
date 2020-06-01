@@ -12,8 +12,8 @@ Here are some packages I have published:
 This library provides several widgets and utilities that enable you to create advanced layouts without in-depth
 knowledge of the framework and minimal boilerplate.
 
-[pub.dev](https://pub.dev/packages/boxy){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[github](https://github.com/PixelToast/flutter-boxy){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[pub.dev](https://pub.dev/packages/boxy){: .btn-primary }
+[github](https://github.com/PixelToast/flutter-boxy){: .btn-primary }
 
 ## async_builder
 
@@ -22,8 +22,8 @@ boilerplate and improve error handling.
 
 It also provides `InitBuilder`, which makes it easier to start async tasks safely.
 
-[pub.dev](https://pub.dev/packages/async_builder){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[github](https://github.com/PixelToast/async_builder){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[pub.dev](https://pub.dev/packages/async_builder){: .btn-primary }
+[github](https://github.com/PixelToast/async_builder){: .btn-primary }
 
 ## spa
 
@@ -34,5 +34,5 @@ the U.S. government for radiology and energy purposes. See the paper here:
 Given an observers coordinates and DateTime it can calculate the position of the sun and other information such as when
 the sun rises and sets.
 
-[pub.dev](https://pub.dev/packages/spa){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[github](https://github.com/PixelToast/dart-spa){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[pub.dev](https://pub.dev/packages/spa){: .btn-primary }
+[github](https://github.com/PixelToast/dart-spa){: .btn-primary }

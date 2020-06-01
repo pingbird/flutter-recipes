@@ -3,7 +3,7 @@
 //
 // stylelint-disable color-named
 
-.btn {
+@mixin btn() {
   display: inline-block;
   box-sizing: border-box;
   padding: 4px 20px;
@@ -40,13 +40,13 @@
   &.zeroclipboard-is-hover,
   &.zeroclipboard-is-active {
     text-decoration: none;
-    background-color: darken($base-button-color, 1%);
+    // background-color: darken($base-button-color, 1%);
   }
 
   &:active,
   &.selected,
   &.zeroclipboard-is-active {
-    background-color: darken($base-button-color, 3%);
+    // background-color: darken($base-button-color, 3%);
     background-image: none;
   }
 
@@ -90,8 +90,38 @@
   }
 }
 
+@mixin btn-color($fg, $bg) {
+  @include btn();
+
+  margin-right: 0.5rem;
+
+  color: $fg;
+  background-color: $bg;
+  opacity: 1;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+
+  &:hover,
+  &.zeroclipboard-is-hover {
+    color: $fg;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+  }
+
+  &:active,
+  &.selected,
+  &.zeroclipboard-is-active {
+    // background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  &.selected:hover {
+    // background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
 .btn-primary {
-  @include btn-color($white, $btn-primary-color);
+  margin-bottom: 1rem;
+  @include fs-5;
+  @include btn-color($white, rgba(45, 45, 45, 0));
 }
 
 .btn-purple {
