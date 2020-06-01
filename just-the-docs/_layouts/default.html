@@ -73,17 +73,13 @@ layout: table_wrappers
 
           {% if page.has_children == true and page.has_toc != false %}
             <hr>
-            <h2>Table of contents</h2>
+            <h2>See also</h2>
             {% assign children_list = site.pages | sort:"nav_order" %}
-            <ul>
-              {% for child in children_list %}
-                {% if child.parent == page.title and child.title != page.title %}
-                <li>
-                  <a class=".btn .btn-prio" href="{{ child.url | absolute_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
-                </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
+            {% for child in children_list %}
+              {% if child.parent == page.title and child.title != page.title %}
+                <a class="btn-primary" href="{{ child.url | absolute_url }}">{{ child.title }}</a>{% if child.summary %} - {{ child.summary }}{% endif %}
+              {% endif %}
+            {% endfor %}
           {% endif %}
 
           {% if site.footer_content != nil %}

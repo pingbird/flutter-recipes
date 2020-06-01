@@ -105,6 +105,9 @@
   h1:first-of-type {
     margin-top: 0.5rem;
     margin-bottom: 3rem;
+    .anchor-heading {
+      display: none;
+    }
   }
 
   dl {

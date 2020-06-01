@@ -7,7 +7,7 @@ parent: FAQ
 
 ## What are types?
 
-A type is a definition used to describe the interface an instance can have, here are a few examples:
+A type is a node used to describe the interface an instance can have, here are a few examples:
 
 ```dart
 // Foo is now an interface type.
@@ -31,7 +31,7 @@ At the highest level, there are only a handful kinds of types:
 4. function types
 5. parameter types
 
-The most common is interface types, which describe a class with its resolved type arguments.
+The most common is interface types, which describe a class and resolved type arguments.
 
 `dart:core` contains a bunch of classes with special type properties, I'll cover those below.
 
