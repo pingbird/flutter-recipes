@@ -71,7 +71,7 @@ class _CountdownPageState extends State<CountdownPage> {
 }
 ```
 
-![](https://i.tst.sh/TAGUK.png)
+![](https://i.tst.sh/KeBTM.jpg)
 
 ## Counting down
 
@@ -199,7 +199,7 @@ Here is a video of the app:
 
 <iframe width="360" height="780" src="https://i.tst.sh/ELNIY.mp4" frameborder="0" allowfullscreen></iframe>
 
-As you can see, the stopwatch continues running when paused.
+As you can see, the countdown continues running when paused.
 
 With debug prints you can confirm that the timer pauses while the settings menu is open.
 
