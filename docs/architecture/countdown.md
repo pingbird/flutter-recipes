@@ -191,7 +191,7 @@ Here is a video of the app:
 
 As you can see, the stopwatch continues running when paused.
 
-With debug prints, I confirmed that tick was not called while the settings menu was open.
+With debug prints you can confirm that the timer pauses while the settings menu is open.
 
 ## Live demo
 
