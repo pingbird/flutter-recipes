@@ -69,8 +69,8 @@ In this case we're using a [Tuple2](https://pub.dev/documentation/tuple/latest/t
 
 ## Streams
 
-Another common problem is when you build widgets from a stream, but then need to make another request to make depending
-on the information from the stream.
+Another common problem is when you build widgets from a stream, but then need to make another request depending on the
+information from the stream.
 
 In this example, we take a stream of `User`s rather than a future, but requests `Friends` in the same way:
 
