@@ -20,7 +20,7 @@
   }
   ,"4": {
     "title": "Dart defines",
-    "content": "Dart defines . If you are looking for a feature similar to environment variables, this is how you implement them. . Defines are explicitly added to common tools used to build and run dart programs, they can then be accessed through the following methods: . print(int.fromEnvironment(&#39;someInt&#39;)); print(bool.fromEnvironment(&#39;someBool&#39;)); print(String.fromEnvironment(&#39;someString&#39;)); . Flutter . Defines in flutter can be passed to run and build: . flutter run --dart-define=someString=foo . flutter build apk --dart-define=someString=foo . Dart . Defines can be passed to the regular dart command through the undocumented -D argument: . dart -DsomeString=foo bin/main.dart .",
+    "content": "Dart defines . If you are looking for a feature similar to environment variables, this is how you implement them. . In Dart code, defines can be accessed through the following methods: . print(int.fromEnvironment(&#39;someInt&#39;)); print(bool.fromEnvironment(&#39;someBool&#39;)); print(String.fromEnvironment(&#39;someString&#39;)); . Flutter . Defines in flutter can be passed to run and build: . flutter run --dart-define=someString=foo . flutter build apk --dart-define=someString=foo . Dart . Defines can be passed to the regular dart command through the undocumented -D argument: . dart -DsomeString=foo bin/main.dart .",
     "url": "/docs/faq/dart-defines.html",
     "relUrl": "/docs/faq/dart-defines.html"
   }
