@@ -15,6 +15,8 @@ knowledge of the framework and minimal boilerplate.
 [pub.dev](https://pub.dev/packages/boxy){: .btn-primary }
 [github](https://github.com/PixelToast/flutter-boxy){: .btn-primary }
 
+---
+
 ## async_builder
 
 This package provides `AsyncBuilder`, a widget similar to `StreamBuilder` / `FutureBuilder` which is designed to reduce
@@ -24,6 +26,8 @@ It also provides `InitBuilder`, which makes it easier to start async tasks safel
 
 [pub.dev](https://pub.dev/packages/async_builder){: .btn-primary }
 [github](https://github.com/PixelToast/async_builder){: .btn-primary }
+
+---
 
 ## spa
 
