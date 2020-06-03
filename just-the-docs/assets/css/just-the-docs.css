@@ -205,8 +205,7 @@ body { position: relative; padding-bottom: 4rem; }
 @media (min-width: 56.25rem) { .site-footer { padding-right: 1rem; padding-left: 2rem; } }
 @media (min-width: 56.25rem) { .site-footer { position: static; justify-self: end; } }
 
-.page-content { line-height: 1.5em; }
-.page-content a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.page-content { line-height: 1.5em; overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; }
 .page-content ul, .page-content ol { padding-left: 1.5em; }
 .page-content ol[type="a"] > li::before { content: counter(step-counter,lower-alpha); }
 .page-content ol { list-style-type: none; counter-reset: step-counter; margin-bottom: 2rem; }
@@ -269,7 +268,7 @@ body { position: relative; padding-bottom: 4rem; }
 .navigation-list-link { display: block; padding-top: 0.25rem; padding-bottom: 0.25rem; }
 .navigation-list-link.active { font-weight: 600; color: #f5f6fa; text-decoration: none; }
 
-.main-nav { display: none; }
+.main-nav { display: none; padding-bottom: 1.5rem; }
 .main-nav.nav-open { display: block; }
 @media (min-width: 56.25rem) { .main-nav { display: block; } }
 
@@ -330,7 +329,7 @@ li .highlight { margin-top: 0.5rem; }
 .btn-outline:hover, .btn-outline:active, .btn-outline.zeroclipboard-is-hover, .btn-outline.zeroclipboard-is-active { color: #0087bb; text-decoration: none; background-color: transparent; }
 .btn-outline:focus { text-decoration: none; outline: none; }
 
-.btn-primary { margin-bottom: 1rem; font-size: 16px !important; display: inline-block; box-sizing: border-box; padding: 4px 20px; margin: 0; font-family: inherit; font-size: inherit; font-weight: 500; line-height: 1.5; color: #0096cf; text-decoration: none; vertical-align: baseline; cursor: pointer; background-color: #36393f; border-width: 0; border-radius: 8px; appearance: none; margin-right: 0.5rem; color: #fff; background-color: rgba(45, 45, 45, 0); opacity: 1; border: 3px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease; }
+.btn-primary { margin-bottom: 1rem; font-size: 16px !important; display: inline-block; box-sizing: border-box; padding: 4px 20px; margin: 0; font-family: inherit; font-size: inherit; font-weight: 500; line-height: 1.5; color: #0096cf; text-decoration: none; vertical-align: baseline; cursor: pointer; background-color: #36393f; border-width: 0; border-radius: 8px; appearance: none; margin-right: 0.5rem; margin-top: 0.3rem; margin-bottom: 0.3rem; color: #fff; background-color: rgba(45, 45, 45, 0); opacity: 1; border: 3px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease; }
 @media (min-width: 31.25rem) { .btn-primary { font-size: 18px !important; } }
 .btn-primary:focus { text-decoration: none; outline: none; }
 .btn-primary:hover, .btn-primary.zeroclipboard-is-hover { color: #008fc5; }
@@ -340,7 +339,7 @@ li .highlight { margin-top: 0.5rem; }
 .btn-primary:disabled, .btn-primary:disabled:hover, .btn-primary.disabled, .btn-primary.disabled:hover { color: rgba(102, 102, 102, 0.5); cursor: default; background-color: rgba(229, 229, 229, 0.5); background-image: none; box-shadow: none; }
 .btn-primary:hover, .btn-primary.zeroclipboard-is-hover { color: #fff; border: 3px solid rgba(255, 255, 255, 0.3); }
 
-.btn-purple { display: inline-block; box-sizing: border-box; padding: 4px 20px; margin: 0; font-family: inherit; font-size: inherit; font-weight: 500; line-height: 1.5; color: #0096cf; text-decoration: none; vertical-align: baseline; cursor: pointer; background-color: #36393f; border-width: 0; border-radius: 8px; appearance: none; margin-right: 0.5rem; color: #fff; background-color: #5e41d0; opacity: 1; border: 3px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease; }
+.btn-purple { display: inline-block; box-sizing: border-box; padding: 4px 20px; margin: 0; font-family: inherit; font-size: inherit; font-weight: 500; line-height: 1.5; color: #0096cf; text-decoration: none; vertical-align: baseline; cursor: pointer; background-color: #36393f; border-width: 0; border-radius: 8px; appearance: none; margin-right: 0.5rem; margin-top: 0.3rem; margin-bottom: 0.3rem; color: #fff; background-color: #5e41d0; opacity: 1; border: 3px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease; }
 .btn-purple:focus { text-decoration: none; outline: none; }
 .btn-purple:hover, .btn-purple.zeroclipboard-is-hover { color: #008fc5; }
 .btn-purple:hover, .btn-purple:active, .btn-purple.zeroclipboard-is-hover, .btn-purple.zeroclipboard-is-active { text-decoration: none; }
@@ -349,7 +348,7 @@ li .highlight { margin-top: 0.5rem; }
 .btn-purple:disabled, .btn-purple:disabled:hover, .btn-purple.disabled, .btn-purple.disabled:hover { color: rgba(102, 102, 102, 0.5); cursor: default; background-color: rgba(229, 229, 229, 0.5); background-image: none; box-shadow: none; }
 .btn-purple:hover, .btn-purple.zeroclipboard-is-hover { color: #fff; border: 3px solid rgba(255, 255, 255, 0.3); }
 
-.btn-blue { display: inline-block; box-sizing: border-box; padding: 4px 20px; margin: 0; font-family: inherit; font-size: inherit; font-weight: 500; line-height: 1.5; color: #0096cf; text-decoration: none; vertical-align: baseline; cursor: pointer; background-color: #36393f; border-width: 0; border-radius: 8px; appearance: none; margin-right: 0.5rem; color: #fff; background-color: #2c84fa; opacity: 1; border: 3px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease; }
+.btn-blue { display: inline-block; box-sizing: border-box; padding: 4px 20px; margin: 0; font-family: inherit; font-size: inherit; font-weight: 500; line-height: 1.5; color: #0096cf; text-decoration: none; vertical-align: baseline; cursor: pointer; background-color: #36393f; border-width: 0; border-radius: 8px; appearance: none; margin-right: 0.5rem; margin-top: 0.3rem; margin-bottom: 0.3rem; color: #fff; background-color: #2c84fa; opacity: 1; border: 3px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease; }
 .btn-blue:focus { text-decoration: none; outline: none; }
 .btn-blue:hover, .btn-blue.zeroclipboard-is-hover { color: #008fc5; }
 .btn-blue:hover, .btn-blue:active, .btn-blue.zeroclipboard-is-hover, .btn-blue.zeroclipboard-is-active { text-decoration: none; }
@@ -358,7 +357,7 @@ li .highlight { margin-top: 0.5rem; }
 .btn-blue:disabled, .btn-blue:disabled:hover, .btn-blue.disabled, .btn-blue.disabled:hover { color: rgba(102, 102, 102, 0.5); cursor: default; background-color: rgba(229, 229, 229, 0.5); background-image: none; box-shadow: none; }
 .btn-blue:hover, .btn-blue.zeroclipboard-is-hover { color: #fff; border: 3px solid rgba(255, 255, 255, 0.3); }
 
-.btn-green { display: inline-block; box-sizing: border-box; padding: 4px 20px; margin: 0; font-family: inherit; font-size: inherit; font-weight: 500; line-height: 1.5; color: #0096cf; text-decoration: none; vertical-align: baseline; cursor: pointer; background-color: #36393f; border-width: 0; border-radius: 8px; appearance: none; margin-right: 0.5rem; color: #fff; background-color: #11b584; opacity: 1; border: 3px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease; }
+.btn-green { display: inline-block; box-sizing: border-box; padding: 4px 20px; margin: 0; font-family: inherit; font-size: inherit; font-weight: 500; line-height: 1.5; color: #0096cf; text-decoration: none; vertical-align: baseline; cursor: pointer; background-color: #36393f; border-width: 0; border-radius: 8px; appearance: none; margin-right: 0.5rem; margin-top: 0.3rem; margin-bottom: 0.3rem; color: #fff; background-color: #11b584; opacity: 1; border: 3px solid rgba(255, 255, 255, 0.1); transition: all 0.2s ease; }
 .btn-green:focus { text-decoration: none; outline: none; }
 .btn-green:hover, .btn-green.zeroclipboard-is-hover { color: #008fc5; }
 .btn-green:hover, .btn-green:active, .btn-green.zeroclipboard-is-hover, .btn-green.zeroclipboard-is-active { text-decoration: none; }
@@ -463,6 +462,7 @@ code { padding: 0 5px 2px; line-height: 1em; font-weight: 400 !important; backgr
 pre { overflow-x: auto; margin: 0 0 2rem 0; padding: 20px; max-width: 100%; font-size: 14px; line-height: 1.5em; background: #2d2d2d; border-radius: 5px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; /*    max-height: 1024px;*/ }
 
 pre code { padding: 0; font-size: 1.1em; line-height: inherit; background: transparent; }
+@media (min-width: 31.25rem) { pre code { font-size: 0.8em; } }
 
 .text-grey-dk-000 { color: #959396 !important; }
 
