@@ -2,6 +2,7 @@
 title: Core
 parent: Architecture
 has_children: true
+wip: true
 ---
 
 # Core
