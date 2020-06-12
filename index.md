@@ -10,7 +10,7 @@ permalink: /
 
 This site is where I post helpful information about [Flutter](https://flutter.dev) and [Dart](https://dart.dev/).
 
-If you have any questions, feel free to ping my on Discord, my username is ping#0001.
+If you have any questions, feel free to ping me on Discord, my username is ping#0001.
 
 ---
 
