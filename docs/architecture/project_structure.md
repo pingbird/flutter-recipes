@@ -1,6 +1,6 @@
 ---
 title: Project Structure
-parent: Core
+parent: Architecture
 ---
 
 # Project Structure

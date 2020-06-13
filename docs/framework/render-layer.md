@@ -1,8 +1,6 @@
 ---
 title: Render Layer
-has_children: true
 parent: Framework
-nav_order: 1
 wip: true
 ---
 

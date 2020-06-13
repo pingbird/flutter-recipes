@@ -1,6 +1,6 @@
 ---
 title: Single Child Render Objects
-parent: Render Layer
+parent: Framework
 wip: true
 ---
 
