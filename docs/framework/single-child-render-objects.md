@@ -8,7 +8,7 @@ wip: true
 
 In this post, we will implement a basic single-child render box from scratch.
 
-## The Widget
+## SingleChildRenderObjectWidget
 
 To keep it simple, all this widget will do is lay itself out like a square:
 
@@ -29,7 +29,7 @@ class Square extends SingleChildRenderObjectWidget {
 }
 ```
 
-## The RenderBox
+## RenderBox
 
 First, create the `RenderBox` implementation and mixin `RenderObjectWithChildMixin` for convenience:
 
@@ -115,3 +115,10 @@ Finally, implement the paint method:
     }
   }
 ```
+
+## Result
+
+When combined with ClipOval and Container, this creates a perfectly circular bubble that matches the size of its
+child:
+
+![](https://i.tst.sh/DgBDX.gif)
