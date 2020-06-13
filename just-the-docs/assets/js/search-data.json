@@ -91,8 +91,8 @@
     "relUrl": "/docs/performance/"
   }
   ,"16": {
-    "title": "Render layer",
-    "content": "Render layer . Before continuing, I highly recommend reading the documentation for RenderObject, RenderBox, and Element. . TODO .",
+    "title": "Render Layer",
+    "content": "Render Layer . Before continuing, I highly recommend reading the documentation for RenderObject, RenderBox, and Element. . TODO .",
     "url": "/docs/framework/render-layer/",
     "relUrl": "/docs/framework/render-layer/"
   }
