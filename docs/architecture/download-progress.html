@@ -131,23 +131,33 @@
 </code></pre></div></div> <p>Finally, implement the download button:</p> <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          <span class="n">RaisedButton</span><span class="o">(</span>
             <span class="nl">child:</span> <span class="n">Text</span><span class="o">(</span><span class="s">'Start'</span><span class="o">),</span>
             <span class="nl">onPressed:</span> <span class="o">()</span> <span class="n">async</span> <span class="o">{</span>
+              <span class="c1">// Ignore button press if a download is already in progress.</span>
+              <span class="k">if</span> <span class="o">(</span><span class="n">download</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span><span class="o">;</span>
+
+              <span class="c1">// The http client must be disposed after use, we use a</span>
+              <span class="c1">// try/finally to make sure it gets disposed properly.</span>
               <span class="n">http</span><span class="o">.</span><span class="na">Client</span> <span class="n">client</span><span class="o">;</span>
               <span class="k">try</span> <span class="o">{</span>
                 <span class="n">client</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Client</span><span class="o">();</span>
 
+                <span class="c1">// Start the download task using client.send.</span>
                 <span class="n">download</span> <span class="o">=</span> <span class="n">await</span> <span class="n">DownloadTask</span><span class="o">(</span><span class="n">await</span> <span class="n">client</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span>
                   <span class="s">'GET'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'https://i.tst.sh/XaY4i.jpg'</span><span class="o">)</span>
                 <span class="o">)));</span>
 
+                <span class="c1">// Safely notify the UI that we have a download in progress.</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">mounted</span><span class="o">)</span> <span class="n">setState</span><span class="o">(()</span> <span class="o">{});</span>
+                
+                <span class="c1">// Compute the file path with package:path and package:path_provider.</span>
                 <span class="n">filePath</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="na">join</span><span class="o">(</span>
                   <span class="o">(</span><span class="n">await</span> <span class="n">getApplicationDocumentsDirectory</span><span class="o">()).</span><span class="na">path</span><span class="o">,</span>
                   <span class="s">'birb.jpg'</span><span class="o">,</span>
                 <span class="o">);</span>
 
-                <span class="k">if</span> <span class="o">(</span><span class="n">mounted</span><span class="o">)</span> <span class="n">setState</span><span class="o">(()</span> <span class="o">{});</span>
-
+                <span class="c1">// Pipe the download into a file at filePath.</span>
                 <span class="n">await</span> <span class="n">download</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">File</span><span class="o">(</span><span class="n">filePath</span><span class="o">));</span>
 
+                <span class="c1">// Safely notify the UI that the download is complete.</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">mounted</span><span class="o">)</span> <span class="n">setState</span><span class="o">(()</span> <span class="o">{</span>
                   <span class="n">download</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
                   <span class="n">done</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
@@ -155,6 +165,7 @@
               <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">e</span><span class="o">,</span> <span class="n">bt</span><span class="o">)</span> <span class="o">{</span>
                 <span class="n">print</span><span class="o">(</span><span class="s">'Error: </span><span class="si">$e</span><span class="se">\n</span><span class="si">$bt</span><span class="s">'</span><span class="o">);</span>
 
+                <span class="c1">// An error has occured, cancel the download.</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">mounted</span><span class="o">)</span> <span class="n">setState</span><span class="o">(()</span> <span class="o">{</span>
                   <span class="n">download</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
                   <span class="n">done</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
