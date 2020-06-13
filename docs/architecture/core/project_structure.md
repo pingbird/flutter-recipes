@@ -48,8 +48,8 @@ pages/settings/settings_page.dart
 
 Basically, keep it as flat as possible, avoid creating categories that don't add meaning to a particular file.
 
-If a set dart files are used a lot, it's helpful to create a dart file specifically for exporting them, in this case
-`utils.dart`, `common.dart`, `profile.dart`.
+If a set dart files are used a lot, it may be helpful to create a dart file specifically for exporting them, in this
+case `utils.dart`, `common.dart`, `profile.dart`.
 
 Whether or not to split complex files up into separate smaller ones is up to preference, I personally don't have a
 problem working with multi-thousand line files as long as its not cluttered. At the same time having trivial files is

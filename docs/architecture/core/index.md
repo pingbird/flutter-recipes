@@ -20,17 +20,17 @@ Very often I see architectures that simply make your life harder without providi
 biggest example being MVC.
 
 Flutter is one of a kind, what works well in other UI frameworks does not necessarily work well in Flutter, which is
-why I encourage people to use the core patterns the framework provides instead of trying to shim idioms from other
-ecosystems into it.
+why I encourage people to use the core patterns the framework instead of trying to shim idioms from other ecosystems
+into it.
 
 Many patterns revolve around separation of business logic and UI, in Flutter this is not an important goal because
 the widget layer was designed explicitly to accommodate both business logic and UI, without impacting the performance
 of rendering.
 
 Reducers are also not something im a fan of, the primary reason I don't like reducers is not actually the concept itself
-but because Dart lacks concise syntax for tagged unions. While it may be a little easier to reason around reducers in
-some scenarios I still feel like it makes code too verbose when compared to an object oriented solution.
-  
+but because Dart lacks concise syntax for tagged unions. While it may be a little easier to reason around reducers, I
+still feel like its too much work to write compared to an object oriented solution.
+
 ---
 
 ## Dart
