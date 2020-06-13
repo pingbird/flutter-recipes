@@ -185,23 +185,33 @@ Finally, implement the download button:
           RaisedButton(
             child: Text('Start'),
             onPressed: () async {
+              // Ignore button press if a download is already in progress.
+              if (download != null) return;
+
+              // The http client must be disposed after use, we use a
+              // try/finally to make sure it gets disposed properly.
               http.Client client;
               try {
                 client = http.Client();
 
+                // Start the download task using client.send.
                 download = await DownloadTask(await client.send(http.Request(
                   'GET', Uri.parse('https://i.tst.sh/XaY4i.jpg')
                 )));
 
+                // Safely notify the UI that we have a download in progress.
+                if (mounted) setState(() {});
+                
+                // Compute the file path with package:path and package:path_provider.
                 filePath = path.join(
                   (await getApplicationDocumentsDirectory()).path,
                   'birb.jpg',
                 );
 
-                if (mounted) setState(() {});
-
+                // Pipe the download into a file at filePath.
                 await download.save(File(filePath));
 
+                // Safely notify the UI that the download is complete.
                 if (mounted) setState(() {
                   download = null;
                   done = true;
@@ -209,6 +219,7 @@ Finally, implement the download button:
               } catch (e, bt) {
                 print('Error: $e\n$bt');
 
+                // An error has occured, cancel the download.
                 if (mounted) setState(() {
                   download = null;
                   done = false;
