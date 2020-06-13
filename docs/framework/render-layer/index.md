@@ -1,12 +1,12 @@
 ---
-title: Render layer
+title: Render Layer
 has_children: true
 parent: Framework
 nav_order: 1
 wip: true
 ---
 
-# Render layer
+# Render Layer
 
 Before continuing, I highly recommend reading the documentation for
 [RenderObject](https://api.flutter.dev/flutter/rendering/RenderObject-class.html),
