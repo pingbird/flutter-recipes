@@ -31,7 +31,7 @@ class Square extends SingleChildRenderObjectWidget {
 
 ## RenderBox
 
-First, create the `RenderBox` implementation and mixin `RenderObjectWithChildMixin` for convenience:
+Now we create the `RenderBox` implementation and mixin `RenderObjectWithChildMixin` for convenience:
 
 ```dart
 class RenderSquare extends RenderBox
