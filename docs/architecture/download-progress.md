@@ -219,7 +219,7 @@ Finally, implement the download button:
               } catch (e, bt) {
                 print('Error: $e\n$bt');
 
-                // An error has occured, cancel the download.
+                // An error has occurred, cancel the download.
                 if (mounted) setState(() {
                   download = null;
                   done = false;
