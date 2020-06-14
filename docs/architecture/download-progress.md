@@ -121,7 +121,7 @@ class DownloadTask {
   factory DownloadTask(http.StreamedResponse response) {
     var progress = ValueNotifier(0);
     return DownloadTask._(
-      length: response.contentLength < 0 ? null : response.contentLength,
+      length: response.contentLength,
       progress: progress,
       stream: response.stream.map((event) {
         progress.value += event.length;
