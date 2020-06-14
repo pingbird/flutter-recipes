@@ -200,7 +200,7 @@ In RenderSquare, implement the opacity property:
   }
 ```
 
-And finally, this property can be used in `paint` to change the opacity of the child:
+Finally, this property can be used in `paint` to change the opacity of the child:
 
 ```dart
   @override
