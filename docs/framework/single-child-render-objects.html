@@ -125,7 +125,7 @@
     <span class="c1">// `markNeedsLayout` instead, which does a relayout + repaint.</span>
     <span class="n">markNeedsPaint</span><span class="o">();</span>
   <span class="o">}</span>
-</code></pre></div></div> <p>And finally, this property can be used in <code class="language-plaintext highlighter-rouge">paint</code> to change the opacity of the child:</p> <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@override</span>
+</code></pre></div></div> <p>Finally, this property can be used in <code class="language-plaintext highlighter-rouge">paint</code> to change the opacity of the child:</p> <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@override</span>
   <span class="kt">void</span> <span class="n">paint</span><span class="o">(</span><span class="n">PaintingContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">Offset</span> <span class="n">offset</span><span class="o">)</span> <span class="o">{</span>
     <span class="k">if</span> <span class="o">(</span><span class="n">child</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
       <span class="c1">// Paint always happens after the layout phase is complete,</span>
