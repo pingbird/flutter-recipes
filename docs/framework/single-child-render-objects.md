@@ -190,7 +190,7 @@ In RenderSquare, implement the opacity property:
     // Set the real opacity value.
     _opacity = value;
 
-    // Here we tell notify the framework of changes to our
+    // Here we notify the framework of changes to our
     // configuration, in this case the update is purely visual
     // so we call `markNeedsPaint`.
     //
