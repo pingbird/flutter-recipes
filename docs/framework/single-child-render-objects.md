@@ -1,7 +1,6 @@
 ---
 title: Single Child Render Objects
 parent: Framework
-wip: true
 ---
 
 # Single Child Render Objects
