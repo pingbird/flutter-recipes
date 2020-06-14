@@ -234,7 +234,7 @@ Finally, this property can be used in `paint` to change the opacity of the child
       // specific features without repainting e.g. simple offsets
       // with OffsetLayer.
       //
-      // This means in order to apply many paint effects to a child,
+      // This means in order to apply any paint effects to a child,
       // we have to push a layer underneath it. In this case, we push
       // an OpacityLayer.
       context.pushOpacity(offset, alpha, (context, offset) {
