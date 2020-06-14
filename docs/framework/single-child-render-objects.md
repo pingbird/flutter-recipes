@@ -260,7 +260,7 @@ Finally, this property can be used in `paint` to change the opacity of the child
 
 ## Final result
 
-The final result is a square also changes its opacity:
+The final result is a square that also changes its opacity:
 
 ![](https://i.tst.sh/NtBvq.gif)
 
