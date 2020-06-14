@@ -91,7 +91,7 @@
   <span class="kd">factory</span> <span class="n">DownloadTask</span><span class="o">(</span><span class="n">http</span><span class="o">.</span><span class="na">StreamedResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
     <span class="kd">var</span> <span class="n">progress</span> <span class="o">=</span> <span class="n">ValueNotifier</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
     <span class="k">return</span> <span class="n">DownloadTask</span><span class="o">.</span><span class="na">_</span><span class="o">(</span>
-      <span class="nl">length:</span> <span class="n">response</span><span class="o">.</span><span class="na">contentLength</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="n">response</span><span class="o">.</span><span class="na">contentLength</span><span class="o">,</span>
+      <span class="nl">length:</span> <span class="n">response</span><span class="o">.</span><span class="na">contentLength</span><span class="o">,</span>
       <span class="nl">progress:</span> <span class="n">progress</span><span class="o">,</span>
       <span class="nl">stream:</span> <span class="n">response</span><span class="o">.</span><span class="na">stream</span><span class="o">.</span><span class="na">map</span><span class="o">((</span><span class="n">event</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">progress</span><span class="o">.</span><span class="na">value</span> <span class="o">+=</span> <span class="n">event</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
