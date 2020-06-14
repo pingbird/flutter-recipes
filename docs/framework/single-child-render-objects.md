@@ -136,7 +136,7 @@ Live demo: [https://dartpad.dartlang.org/40622dd3145144d1535e9dab0ee5ea63](https
 
 What if our RenderObject needs some extra properties?
 
-First, add the property to the Widget, in this case we are adding an opacity:
+First, add the property to the Widget, in this case an opacity:
 
 ```dart
   final double opacity;
@@ -151,7 +151,7 @@ First, add the property to the Widget, in this case we are adding an opacity:
   );
 ```
 
-Then modify createRenderObject so that it passes the property to the RenderSquare constructor:
+Then modify createRenderObject so that it constructs RenderSquare with opacity:
 
 ```dart
   @override
