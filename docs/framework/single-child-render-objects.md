@@ -170,7 +170,7 @@ In order for RenderSquare to update when the widget configuration changes, imple
   }
 ```
 
-For RenderSquare, implement the opacity property:
+In RenderSquare, implement the opacity property:
 
 ```dart
   RenderSquare({
