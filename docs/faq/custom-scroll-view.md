@@ -10,6 +10,8 @@ same mechanism behind widgets like `ListView.builder`.
 
 Another helpful resource on slivers can be found here: https://flutter.dev/docs/development/ui/advanced/slivers
 
+---
+
 ## ListView.builder
 
 So, you want to make a list like this:
@@ -45,6 +47,8 @@ CustomScrollView(slivers: [
   ),
 ])
 ```
+
+---
 
 ## Going deeper
 
