@@ -73,7 +73,7 @@ CustomScrollView(slivers: [
 ```
 
 Unfortunately, putting a sliver widget inside of a card like this isn't possible with core Flutter widgets, thankfully I
-wrote a package that does exactly that: https://pub.dev/packages/boxy
+wrote a package that does exactly that: [package:boxy](https://pub.dev/packages/boxy).
 
 With this package, we can just replace `Card` with `SliverCard`:
 
