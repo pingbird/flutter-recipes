@@ -238,9 +238,8 @@ Finally, this property can be used in `paint` to change the opacity of the child
       // we have to push a layer underneath it. In this case, we push
       // an OpacityLayer.
       context.pushOpacity(offset, alpha, (context, offset) {
-        // We call PaintingContext.paintChild to paint the child,
-        // you can paint a specific child either once or not at all
-        // per frame.
+        // Everything painted in the following callback will have an
+        // opacity effect.
         context.paintChild(child, parentData.offset + offset);
       });
     }
