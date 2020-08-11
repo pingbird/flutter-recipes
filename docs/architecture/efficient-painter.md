@@ -80,14 +80,14 @@ class DrawingPainter extends CustomPainter {
 }
 ```
 
-<iframe width="360" height="780" src="http://i.tst.sh/rvPCC.mp4" frameborder="0" allowfullscreen></iframe>
+<iframe width="360" height="780" src="https://i.tst.sh/rvPCC.mp4" frameborder="0" allowfullscreen></iframe>
 
 And this feels pretty smooth, at least until we reach a few thousand points or so.
 
 By graphing how long it takes each frame to render, we can see that every call to drawCircle costs us around 2
 microseconds on the raster thread:
 
-![](http://i.tst.sh/FVheWTZHWM.png)
+![](https://i.tst.sh/FVheWTZHWM.png)
 
 The goal is to make the frame time constant instead of linear, and to do that we can use PictureRecorder.
 
@@ -224,7 +224,7 @@ Because we paint to an image, this example does not degrade in performance over 
 But there is another problem, the time it takes to call toImage is so long that the image lags behind your actual touch
 (indicated by the red dot):
 
-<iframe width="360" height="780" src="http://i.tst.sh/RDKht.mp4" frameborder="0" allowfullscreen></iframe>
+<iframe width="360" height="780" src="https://i.tst.sh/RDKht.mp4" frameborder="0" allowfullscreen></iframe>
 
 This problem can be mitigated by combining both of the above approaches, where we paint points in out CustomPainter but
 render them to an image periodically.
