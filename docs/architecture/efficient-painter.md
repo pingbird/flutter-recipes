@@ -226,8 +226,8 @@ But there is another problem, the time it takes to call toImage is so long that 
 
 <iframe width="360" height="780" src="https://i.tst.sh/RDKht.mp4" frameborder="0" allowfullscreen></iframe>
 
-This problem can be mitigated by combining both of the above approaches, where we paint points in out CustomPainter but
-render them to an image periodically.
+This problem can be mitigated by combining both of the above approaches, where we paint points in our CustomPainter but
+also render them to an image periodically.
 
 ---
 
@@ -375,4 +375,4 @@ class DrawingPainter extends CustomPainter {
 }
 ```
 
-And finally, we have the same performance as our first example but without degrading over time.
+Finally, we have the same performance as our first example but without degrading over time.
