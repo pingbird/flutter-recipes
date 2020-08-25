@@ -8,7 +8,7 @@ parent: FAQ
 CustomScrollView is a widget that allows you to do create layouts that are dependent on the scroll offset, this is the
 same mechanism behind widgets like `ListView.builder`.
 
-Another helpful resource on slivers can be found here: https://flutter.dev/docs/development/ui/advanced/slivers
+Another helpful resource on slivers can be found here: [https://flutter.dev/docs/development/ui/advanced/slivers](https://flutter.dev/docs/development/ui/advanced/slivers)
 
 ---
 
@@ -99,3 +99,5 @@ This gives us an effect like the following demo, where the children of the Slive
 destroyed:
 
 ![](https://i.tst.sh/ua72L.gif)
+
+Source code: [https://github.com/PixelToast/flutter-boxy/blob/master/example/lib/pages/sliver_container.dart#L121](https://github.com/PixelToast/flutter-boxy/blob/2a8664906e2d0dcad7195fea0ab30c251dbfa3ef/example/lib/pages/sliver_container.dart#L121)
