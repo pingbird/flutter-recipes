@@ -426,7 +426,7 @@ code[class*="language-"], pre[class*="language-"] { color: #eee; background: non
 /* Code blocks */
 pre[class*="language-"] { overflow: auto; }
 
-:not(pre) > code[class*="language-"], pre[class*="language-"] { background: #202020; }
+:not(pre) > code[class*="language-"], pre[class*="language-"] { background: #2020206b; }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] { padding-left: .5em; padding-right: .5em; padding-top: .2em; padding-bottom: .2em; border-radius: .3em; white-space: normal; }
@@ -459,7 +459,7 @@ pre[class*="language-"] { overflow: auto; }
 
 code { padding: 0 5px 2px; line-height: 1em; font-weight: 400 !important; background: #202020; border-radius: 3px; font-size: 0.9em; }
 
-pre { overflow-x: auto; margin: 0 0 2rem 0; padding: 10px; max-width: 100%; font-size: 14px; line-height: 1.2; background: #202020; border-radius: 5px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; /*    max-height: 1024px;*/ }
+pre { overflow-x: auto; margin: 0 0 2rem 0; padding: 10px; max-width: 100%; font-size: 14px; line-height: 1.2; background: #202020; border-radius: 5px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.05); font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; /*    max-height: 1024px;*/ }
 @media (min-width: 31.25rem) { pre { font-size: 1.1em; padding: 20px; } }
 
 pre code { padding: 0; background: transparent; }
