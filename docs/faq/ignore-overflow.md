@@ -12,7 +12,7 @@ The problem is not actually the fault of the Flex itself, rather the constraints
 this issue the main axis constraint needs to either be *unbounded* i.e. have a maximum main axis size of
 `double.infinity` or have a `clipBehavior` of `Clip.none`.
 
-The simplest way to ignore overflow is to use `Flex` instead set the clip:
+The simplest way to ignore overflow is to use `Flex` instead, and set the clip:
 
 ```dart
 Flex(
