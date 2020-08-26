@@ -30,7 +30,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background: #202020;
+  background: #2020206b;
 }
 
 /* Inline code */
@@ -138,7 +138,7 @@ pre {
   }
   background: #202020;
   border-radius: 5px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   /*    max-height: 1024px;*/
 }
