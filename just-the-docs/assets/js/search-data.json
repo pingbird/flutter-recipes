@@ -26,7 +26,7 @@
   }
   ,"5": {
     "title": "Dart defines",
-    "content": "Dart defines . If you are looking for a feature similar to environment variables, this is how you implement them. . In Dart code, defines can be accessed through the following methods: . const someInt = int.fromEnvironment(&#39;someInt&#39;); const someBool = bool.fromEnvironment(&#39;someBool&#39;); const someString = String.fromEnvironment(&#39;someString&#39;); . When using the front-end separately, fromEnvironment should only be called in a const expression because it won’t be available at runtime, this includes Flutter apps. . Flutter . Defines in flutter can be passed to run and build: . flutter run --dart-define=someString=foo . flutter build apk --dart-define=someString=foo . Dart . Defines can be passed to the regular dart command through the undocumented -D argument: . dart -DsomeString=foo bin/main.dart . Secret keys . This is not a solution to providing “secret” keys to a Flutter application, if a key is secret then it should not be included at all. . It’s perfectly fine to include public keys in dart code and push them to git, e.g. a token for the Google Maps API. .",
+    "content": "Dart defines . If you are looking for a feature similar to environment variables, this is how you implement them. . In Dart code, defines can be accessed through the following methods: . const someInt = int.fromEnvironment(&#39;someInt&#39;); const someBool = bool.fromEnvironment(&#39;someBool&#39;); const someString = String.fromEnvironment(&#39;someString&#39;); . In the case of Flutter apps, fromEnvironment should only be called in a const expression because it won’t be available at runtime. . Flutter . Defines in flutter can be passed to run and build: . flutter run --dart-define=someString=foo . flutter build apk --dart-define=someString=foo . Dart . Defines can be passed to the regular dart command through the undocumented -D argument: . dart -DsomeString=foo bin/main.dart . Secret keys . This is not a solution to providing secret keys to a Flutter application, if a key is secret then it should not be shipped in your app. . It’s perfectly fine to include public keys in dart code and even push them to git, e.g. a token for the Google Maps API. .",
     "url": "/docs/faq/dart-defines.html",
     "relUrl": "/docs/faq/dart-defines.html"
   }
@@ -73,10 +73,10 @@
     "relUrl": "/docs/faq/ignore-overflow.html"
   }
   ,"13": {
-    "title": "FAQ",
-    "content": "FAQ . A bunch of commonly asked questions on Discord. .",
-    "url": "/docs/faq/",
-    "relUrl": "/docs/faq/"
+    "title": "Architecture",
+    "content": "Architecture . These are a set of core state management patterns I use in Flutter, most of these patterns are inspired from the Flutter framework itself. . The biggest goal of this category is to provide patterns that make code simpler, and by extension your life easier. . I encourage people to use the core patterns the framework before trying to force idioms from other ecosystems into it, it is very important to take your time and think critically. . . Dart . By far the most underrated tools for state management are core features in Dart itself, I highly recommend reading through the following if you have not already: . Language Tour - A tour of Dart’s basic syntax. | dart:async - Documentation for the dart:async library | Iterable - The thing that make lists do the thing. | . Clever usage of Streams and Iterables will save you an insane amount of work, reading and practicing them are well worth the time. .",
+    "url": "/docs/architecture/",
+    "relUrl": "/docs/architecture/"
   }
   ,"14": {
     "title": "Design",
@@ -85,28 +85,28 @@
     "relUrl": "/docs/design/"
   }
   ,"15": {
-    "title": "Architecture",
-    "content": "Architecture . These are a set of core state management patterns I use in Flutter, most of these patterns are inspired from the Flutter framework itself. . The biggest goal of this category is to provide patterns that make code simpler, and by extension your life easier. . I encourage people to use the core patterns the framework before trying to force idioms from other ecosystems into it, it is very important to take your time and think critically. . . Dart . By far the most underrated tools for state management are core features in Dart itself, I highly recommend reading through the following if you have not already: . Language Tour - A tour of Dart’s basic syntax. | dart:async - Documentation for the dart:async library | Iterable - The thing that make lists do the thing. | . Clever usage of Streams and Iterables will save you an insane amount of work, reading and practicing them are well worth the time. .",
-    "url": "/docs/architecture/",
-    "relUrl": "/docs/architecture/"
+    "title": "FAQ",
+    "content": "FAQ . A bunch of commonly asked questions on Discord. .",
+    "url": "/docs/faq/",
+    "relUrl": "/docs/faq/"
   }
   ,"16": {
-    "title": "Performance",
-    "content": "Performance . This category is about performance related topics like best practices and debugging. .",
-    "url": "/docs/performance/",
-    "relUrl": "/docs/performance/"
-  }
-  ,"17": {
     "title": "Framework",
     "content": "Framework . Information about framework and engine internals, e.g. Element, RenderObject, Canvas. . Here are some useful resources on this topic: . Technical Overview - An official overview of flutter internals. | Flutter’s Rendering Pipeline - A video describing the render layer in-depth. | How Flutter Renders Widgets - A video describing how the widget layer works. | Flutter’s Layered Design - Similar to the video above, but a bit older. | flutterinternals.org - A community maintained wiki page with some helpful articles. | .",
     "url": "/docs/framework/",
     "relUrl": "/docs/framework/"
   }
-  ,"18": {
+  ,"17": {
     "title": "Packages",
     "content": "Packages . Here are some packages I have published: . boxy . This library provides several widgets and utilities that enable you to create advanced layouts without in-depth knowledge of the framework and minimal boilerplate. . pub.dev github . . async_builder . This package provides AsyncBuilder, a widget similar to StreamBuilder / FutureBuilder which is designed to reduce boilerplate and improve error handling. . It also provides InitBuilder, which makes it easier to start async tasks safely. . pub.dev github . . spa . This is a Dart implementation of the Solar Position Algorithm (SPA) by Ibrahim Reda and Afshin Andreas which is used by the U.S. government for radiology and energy purposes. See the paper here: https://www.nrel.gov/docs/fy08osti/34302.pdf . Given an observers coordinates and DateTime it can calculate the position of the sun and other information such as when the sun rises and sets. . pub.dev github .",
     "url": "/docs/packages/",
     "relUrl": "/docs/packages/"
+  }
+  ,"18": {
+    "title": "Performance",
+    "content": "Performance . This category is about performance related topics like best practices and debugging. .",
+    "url": "/docs/performance/",
+    "relUrl": "/docs/performance/"
   }
   ,"19": {
     "title": "Reverse Engineering",
