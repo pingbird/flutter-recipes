@@ -15,8 +15,8 @@ const someBool = bool.fromEnvironment('someBool');
 const someString = String.fromEnvironment('someString');
 ```
 
-When using the front-end separately, fromEnvironment should only be called in a const expression because it won't be
-available at runtime, this includes Flutter apps.
+In the case of Flutter apps, fromEnvironment should only be called in a const expression because it won't be
+available at runtime.
 
 ## Flutter
 
@@ -40,7 +40,7 @@ dart -DsomeString=foo bin/main.dart
 
 ## Secret keys
 
-This is not a solution to providing "secret" keys to a Flutter application, if a key is secret then it should not be
-included at all.
+This is not a solution to providing secret keys to a Flutter application, if a key is secret then it should not be
+shipped in your app.
 
-It's perfectly fine to include public keys in dart code and push them to git, e.g. a token for the Google Maps API.
+It's perfectly fine to include public keys in dart code and even push them to git, e.g. a token for the Google Maps API.
